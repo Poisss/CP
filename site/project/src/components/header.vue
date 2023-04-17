@@ -19,7 +19,7 @@
 
 <style scoped>
 .block{
-    height: 100vh;
+    height: 60vh;
     width: 100vw;
     background: turquoise;
 }

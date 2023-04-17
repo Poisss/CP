@@ -5,10 +5,14 @@ import HeaderM from './components/header.vue'
 
 <template>
   <HeaderM/>
-  
+  <h1>Recent Activity</h1>
 </template>
 
 <style scoped>
+h1{
+  color: black;
+  text-align: center;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
