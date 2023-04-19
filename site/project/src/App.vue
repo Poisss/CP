@@ -7,6 +7,7 @@ import SignU from './components/SignUp.vue'
 </script>
 
 <template>
+  
   <HeaderM/>
   <h1>Recent Activity</h1>
   <SignU/>

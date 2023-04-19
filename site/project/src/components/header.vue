@@ -25,7 +25,7 @@
 }
 .header{
     width: 100vw;
-    background: aquamarine;
+    background: rgb(127, 255, 212);
 }
 .field{
     max-width: 1200px;
