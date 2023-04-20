@@ -2,7 +2,7 @@
 export default{
     data() {
         return {
-            arrDay:[{title:'День',value:100},{title:'1',value:1},{title:'2',value:2},{title:'3',value:3},{title:'4',value:4},{title:'5',value:5},{title:'6',value:6},{title:'7',value:7},{title:'8',value:8},{title:'9',value:9},{title:'10',value:10},
+            arrDay:[{title:'1',value:1},{title:'2',value:2},{title:'3',value:3},{title:'4',value:4},{title:'5',value:5},{title:'6',value:6},{title:'7',value:7},{title:'8',value:8},{title:'9',value:9},{title:'10',value:10},
             {title:'11',value:11},{title:'12',value:12},{title:'13',value:13},{title:'14',value:14},{title:'15',value:15},{title:'16',value:16},{title:'17',value:17},{title:'18',value:18},{title:'19',value:19},{title:'20',value:20},
             {title:'2',value:2},{title:'21',value:21},{title:'22',value:22},{title:'23',value:23},{title:'24',value:24},{title:'25',value:25},{title:'26',value:26},{title:'27',value:27},{title:'28',value:28},{title:'29',value:29},{title:'30',value:30},{title:'31',value:31},],
             arrMonth:[{title:'Январь',value:1},{title:'Февраль',value:2},{title:'Март',value:3},{title:'Апрель',value:4},{title:'Май',value:5},{title:'Июнь',value:6},{title:'Июль',value:7},{title:'Август',value:8},{title:'Сентябрь',value:9},{title:'Октябрь',value:10},{title:'Ноябрь',value:11},{title:'Декабрь',value:12}],
@@ -13,7 +13,17 @@ export default{
             password:"",
             day:"",
             month:"",
-            year:""
+            year:"",
+            sex:"",
+            passwordType:"password",
+            passwordClass:"input_password_span eye",
+            inputFocus:[false,false,false,false]
+        }
+    },
+    methods:{
+        switchPassword(){
+            this.passwordType=this.passwordType==="password" ? "text" : "password"
+            this.passwordClass=this.passwordType==="password" ? "input_password_span eye" : "input_password_span eye-slash"
         }
     }
 }
@@ -23,28 +33,16 @@ export default{
 <div class="field">
     <h1>Регистрация</h1>
     <form>
-        <div class="input">
+        <div :class="inputFocus[0]===false ? 'input focus': 'input blur' ">
             <span class="title">Имя</span>
             <span>
-                <input type="text" v-model="firstName" id="name" placeholder="Введите ваше имя">
+                <input type="text" v-model="firstName" id="name" placeholder="Введите ваше имя" @focus="inputFocus[0] = true" @blur="inputFocus[0] = false">
             </span>
         </div>
-        <div class="input">
+        <div :class="inputFocus[1]===false ? 'input focus': 'input blur' ">
             <span class="title">Фамилия</span>
             <span>
-                <input type="text" v-model="lastName" id="name" placeholder="Введите вашу фамилию">
-            </span>
-        </div>
-        <div class="input">
-            <span class="title">Адрес эл. почты</span>
-            <span>
-                <input type="text" v-model="email" id="name" placeholder="Введите адрес эл. почты">
-            </span>
-        </div>
-        <div class="input">
-            <span class="title">Пароль</span>
-            <span>
-                <input type="password" v-model="password" id="name" placeholder="Введите ваш пароль">
+                <input type="text" v-model="lastName" id="name" placeholder="Введите вашу фамилию" @focus="inputFocus[1] = true" @blur="inputFocus[1] = false">
             </span>
         </div>
         <span>День рождения</span>
@@ -61,6 +59,30 @@ export default{
                 <option disabled value="">Год</option>
                 <option v-for="element in arrYear" v-bind:value="element.value">{{ element.title }}</option>
             </select>
+        </div>
+        <span>Пол</span>
+        <div class="radio">   
+            <label for="one">
+                <input type="radio" id="one" value="Один" v-model="sex">
+                <span>Мужской</span>
+            </label>
+            <label for="two">
+                <input type="radio" id="two" value="Два" v-model="sex">
+                <span>Женский</span>
+            </label>
+        </div>
+        <div :class="inputFocus[2]===false ? 'input emailBefore focus': 'input emailBefore blur' ">
+            <span class="title">Адрес эл. почты</span>
+            <span>
+                <input type="text" v-model="email" id="name" placeholder="Введите адрес эл. почты" @focus="inputFocus[2] = true" @blur="inputFocus[2] = false">
+            </span>
+        </div>
+        <div :class="inputFocus[3]===false ? 'input passwordBefore focus': 'input passwordBefore blur' ">
+            <span class="title">Пароль</span>
+            <span class="input_password">
+                <span :class="passwordClass" @click="switchPassword"></span>
+                <input :type="passwordType" v-model="password" id="name" placeholder="Введите пароль" @focus="inputFocus[3] = true" @blur="inputFocus[3] = false">
+            </span>
         </div>
         <button>Зарегистрироваться</button>
         <!-- <input type="text" v-model="email" id="email"><br>
@@ -90,7 +112,7 @@ input{
     font-size: 22px;
     display: block;
     background: none;
-    padding-left: 43px;
+    padding-left: 48px;
     padding-top: 15px;
     padding-bottom: 15px;
     color: black;
@@ -107,20 +129,65 @@ input:focus,input:active {
     position: relative;
     margin-bottom: 25px;
 }
+
 .input::before{
-    content: url('../assets/user-regular.svg');
+    content: url("../assets/user-regular.svg");
     position: absolute;
     bottom: 29px;
     left: 15px;
     width: 14px;
     height: 14px;
 }
+.emailBefore::before{
+    content: url('../assets/envelope-regular.svg');
+}
+.passwordBefore::before{
+    content: url('../assets/lock-solid.svg');
+}
 .input::after{
     content: " ";
     height: 3px;
     width: 100%;
-    background: rgb(128, 128, 128,0.6);
     border-radius: 5px;
+}
+.focus::after{
+    background: rgb(128, 128, 128,0.6);
+}
+.blur::after{
+    background: rgb(128, 128, 128,1);
+}
+.input_password{
+    position: relative;
+}
+.input_password_span{
+    background: no-repeat center;
+    position: absolute;
+    bottom: 16px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    z-index: 100;
+}
+.eye{
+    background-image: url('../assets/eye-regular.svg');
+}
+.eye-slash{
+    background-image: url('../assets/eye-slash-regular.svg');
+}
+.radio{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 20px;
+}
+.radio label{
+    width: 120px;
+    display: grid;
+    grid-template-columns: 30px auto;
+    gap: 10px;
+}
+input[type="radio"]{
+    width: 20px;
+    height: 20px;
 }
 .select{
     display: grid;
