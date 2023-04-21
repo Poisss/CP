@@ -17,7 +17,7 @@ export default{
             sex:"",
             passwordType:"password",
             passwordClass:"input_password_span eye",
-            inputFocus:[false,false,false,false]
+            inputFocus:[false,false,false,false,false,false,false]
         }
     },
     methods:{
@@ -47,15 +47,15 @@ export default{
         </div>
         <span>День рождения</span>
         <div class="select">
-            <select v-model="day">
+            <select v-model="day" :class="inputFocus[2]===false ? 'select_focus': 'select_blur' " @click="inputFocus[2] = !inputFocus[2]" @blur="inputFocus[2] = false">
                 <option disabled value="">День</option>
                 <option v-for="element in arrDay" v-bind:value="element.value">{{ element.title }}</option>
             </select>
-            <select v-model="month">
+            <select v-model="month" :class="inputFocus[3]===false ? 'select_focus': 'select_blur' " @click="inputFocus[3] = !inputFocus[3]" @blur="inputFocus[3] = false">
                 <option disabled value="">Месяц</option>
                 <option v-for="element in arrMonth" v-bind:value="element.value">{{ element.title }}</option>
             </select>
-            <select v-model="year">
+            <select v-model="year" :class="inputFocus[4]===false ? 'select_focus': 'select_blur' " @click="inputFocus[4] = !inputFocus[4]" @blur="inputFocus[4] = false">
                 <option disabled value="">Год</option>
                 <option v-for="element in arrYear" v-bind:value="element.value">{{ element.title }}</option>
             </select>
@@ -71,24 +71,20 @@ export default{
                 <span>Женский</span>
             </label>
         </div>
-        <div :class="inputFocus[2]===false ? 'input emailBefore focus': 'input emailBefore blur' ">
+        <div :class="inputFocus[5]===false ? 'input emailBefore focus': 'input emailBefore blur' ">
             <span class="title">Адрес эл. почты</span>
             <span>
-                <input type="text" v-model="email" id="name" placeholder="Введите адрес эл. почты" @focus="inputFocus[2] = true" @blur="inputFocus[2] = false">
+                <input type="text" v-model="email" id="name" placeholder="Введите адрес эл. почты" @focus="inputFocus[5] = true" @blur="inputFocus[5] = false">
             </span>
         </div>
-        <div :class="inputFocus[3]===false ? 'input passwordBefore focus': 'input passwordBefore blur' ">
+        <div :class="inputFocus[6]===false ? 'input passwordBefore focus': 'input passwordBefore blur' ">
             <span class="title">Пароль</span>
             <span class="input_password">
                 <span :class="passwordClass" @click="switchPassword"></span>
-                <input :type="passwordType" v-model="password" id="name" placeholder="Введите пароль" @focus="inputFocus[3] = true" @blur="inputFocus[3] = false">
+                <input :type="passwordType" v-model="password" id="name" placeholder="Введите пароль" @focus="inputFocus[6] = true" @blur="inputFocus[6] = false">
             </span>
         </div>
         <button>Зарегистрироваться</button>
-        <!-- <input type="text" v-model="email" id="email"><br>
-        <input type="text" v-model="password" id="password">
-        <input type="text" v-model="repassword" id="confirm">
-        <button @click="g">Отправить</button> -->
     </form>    
 </div>
 
@@ -100,7 +96,7 @@ export default{
     justify-items: center;
     max-width: 600px;
     padding: 20px;
-    margin: 0 auto;
+    margin: 100px auto;
     border: 1px solid gray;
     border-radius: 20px;
 }
@@ -230,15 +226,21 @@ select{
     border-radius: 7px;
     background: white;
     color: black;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
 }
-select::before{
-    content: url('../assets/eye-regular.svg');
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 10;
+select:not([multiple]) {
+  padding-right: 1.2em;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 0.45em) 0.75em;
+  background-size: 0.65em auto;
+}
+.select_focus:not([multiple]) {
+    background-image: url("../assets/caret-down-solid.svg");
+}
+.select_blur:not([multiple]) {
+    background-image: url("../assets/caret-up-solid.svg");
 }
 button{
     width: 390px;

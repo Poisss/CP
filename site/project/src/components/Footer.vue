@@ -5,7 +5,12 @@
 <template>
     <div class="header">
         <div class="field">
-            1
+            <div class="content">
+                1
+            </div>
+            <div class="copy">
+                1
+            </div>
         </div>
     </div>
 </template>
@@ -14,10 +19,11 @@
 .header{
     width: 100vw;
     background: rgb(127, 255, 212);
+    padding: 60px 0 ;
 }
 .field{
     max-width: 1200px;
-    padding: 20px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 </style>

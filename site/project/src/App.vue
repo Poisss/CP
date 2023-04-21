@@ -1,22 +1,35 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
-import HeaderM from './components/header.vue'
+import HeaderM from './components/Header.vue'
 import SignI from './components/Signin.vue'
 import SignU from './components/SignUp.vue'
-
+import MainM from './components/Main.vue'
+import FooterM from './components/Footer.vue'
 </script>
 
 <template>
-  
-  <HeaderM/>
-  <h1>Recent Activity</h1>
-  <SignU/>
+  <div class="block">
+    <div>
+      <HeaderM/>
+    </div>
+    <div>
+      <SignU/>
+    </div>
+    <div>
+      <FooterM/>
+    </div>
+  </div>
 </template>
 
 <style scoped>
 h1{
   color: black;
   text-align: center;
+}
+.block{
+  display: grid;
+  grid-template-rows:auto 1fr auto;
+  min-height: 100vh;
 }
 .logo {
   height: 6em;
