@@ -106,6 +106,7 @@ export default{
 }
 .title{
     font-size: 17px;
+    cursor: default;
 }
 input{
     width: 340px;
@@ -186,8 +187,35 @@ input:focus,input:active {
     gap: 10px;
 }
 input[type="radio"]{
+    position: relative;
     width: 20px;
-    height: 20px;
+    height: 20px; 
+    appearance: none;
+    outline: none;
+}
+input[type='radio']::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+}
+input[type='radio']:checked::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: dodgerblue;
+    transform: translate(-50%, -50%);
+    visibility: visible;
 }
 .select{
     display: grid;
@@ -197,8 +225,20 @@ input[type="radio"]{
     margin-bottom: 25px;
 }
 select{
+    position: relative;
     padding: 10px;
     border-radius: 7px;
+    background: white;
+    color: black;
+}
+select::before{
+    content: url('../assets/eye-regular.svg');
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
 }
 button{
     width: 390px;
