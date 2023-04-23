@@ -85,6 +85,7 @@ export default{
             </span>
         </div>
         <button>Зарегистрироваться</button>
+        
     </form>    
 </div>
 

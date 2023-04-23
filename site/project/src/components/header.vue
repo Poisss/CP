@@ -5,7 +5,7 @@
 <template>
     <div class="header">
         <div class="field">
-            1
+            <img src="../assets/logo_relp.svg" alt="" width="50">
         </div>
     </div>
 </template>
