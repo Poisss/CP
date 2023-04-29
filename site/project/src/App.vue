@@ -1,9 +1,5 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
 import HeaderM from './components/header.vue'
-import SignI from './components/Signin.vue'
-import SignU from './components/SignUp.vue'
-import MainM from './components/Main.vue'
 import FooterM from './components/Footer.vue'
 </script>
 

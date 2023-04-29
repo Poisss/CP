@@ -5,15 +5,15 @@
 <template>
     <div class="header">
         <div class="logo">
-            <img src="../assets/logo_relp.svg" alt="" width="50">
+            <div class="logo-div">
+                <img src="../assets/logo_relp.svg" alt="" width="50">
+            </div>
         </div>
-        <div class="field">
-            <div class="nav">
-                
-            </div>
-            <div class="log">
+        <div class="nav">1
 
-            </div>
+        </div>
+        <div class="login">1
+            
         </div>
     </div>
 </template>
@@ -25,24 +25,23 @@
     position: relative;
     min-height: 100px;
     border-bottom: 1px solid gray;
+    display: grid;
+    grid-template-columns: minmax(200px,1fr) minmax(300px,1200px) minmax(300px,1fr);
+    padding: 24px 0;
 }
 .logo{
+    position: relative;
+}
+.logo-div{
     display: flex;
     align-items: center;
     position: absolute;
     top: 0px;
-    left: 4%;
+    left: 75px;
     height: 100%;
     cursor: pointer;
 }
 .logo img{
     display: block;
-}
-.field{
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    max-width: 1200px;
-    padding: 20px;
-    margin: 0 auto;
 }
 </style>
