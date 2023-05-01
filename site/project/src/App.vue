@@ -1,6 +1,7 @@
 <script setup>
 import HeaderM from './components/header.vue'
 import FooterM from './components/Footer.vue'
+
 </script>
 
 <template>
@@ -9,7 +10,9 @@ import FooterM from './components/Footer.vue'
       <HeaderM/>
     </div>
     <div>
-      <SignU/>
+      <router-view>
+
+      </router-view>
     </div>
     <div>
       <FooterM/>

@@ -30,6 +30,7 @@ export default{
 </script>
 
 <template>
+    
 <div class="field">
     <h1>Регистрация</h1>
     <form>
@@ -74,7 +75,7 @@ export default{
         <div :class="inputFocus[5]===false ? 'input emailBefore focus': 'input emailBefore blur' ">
             <span class="title">Адрес эл. почты</span>
             <span>
-                <input type="text" v-model="email" id="name" placeholder="Введите адрес эл. почты" @focus="inputFocus[5] = true" @blur="inputFocus[5] = false">
+                <input type="email" v-model="email" id="name" placeholder="Введите адрес эл. почты" @focus="inputFocus[5] = true" @blur="inputFocus[5] = false">
             </span>
         </div>
         <div :class="inputFocus[6]===false ? 'input passwordBefore focus': 'input passwordBefore blur' ">
@@ -100,6 +101,7 @@ export default{
     margin: 100px auto;
     border: 1px solid gray;
     border-radius: 20px;
+    box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
 }
 .title{
     font-size: 17px;
@@ -246,5 +248,8 @@ select:not([multiple]) {
 button{
     width: 390px;
     text-align: center;
+    box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    margin-bottom: 35px;
 }
 </style>

@@ -5,15 +5,20 @@
 <template>
     <div class="header">
         <div class="logo">
-            <div class="logo-div">
+            <router-link to="/Main" class="logo-div">
                 <img src="../assets/logo_relp.svg" alt="" width="50">
-            </div>
+            </router-link>
         </div>
         <div class="nav">1
 
         </div>
-        <div class="login">1
-            
+        <div class="login">
+            <router-link to="/SignUp">
+                Регистрация
+            </router-link>
+            <router-link to="/SignIn">
+                Войти
+            </router-link>
         </div>
     </div>
 </template>
@@ -43,5 +48,11 @@
 }
 .logo img{
     display: block;
+}
+.login{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
 }
 </style>
