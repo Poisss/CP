@@ -6,8 +6,12 @@ export default{
             password:"",
             passwordType:"password",
             passwordClass:"input_password_span eye",
-            inputFocus:[false,false]
+            inputFocus:[false,false],
+            rr: null
         }
+    },
+    mounted() {
+        this.rr = this.$route.query.id
     },
     methods:{
         switchPassword(){
@@ -21,7 +25,7 @@ export default{
 <template>
 
 <div class="field">
-    <h1>Вход</h1>
+    <h1>Вход{{rr}}</h1>
     <form>
         <div :class="inputFocus[0]===false ? 'input emailBefore focus': 'input emailBefore blur' ">
             <span class="title">Адрес эл. почты</span>

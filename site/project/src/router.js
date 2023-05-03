@@ -9,8 +9,24 @@ export default createRouter({
 
     ),
     routes:[
-        {path:'/Main',component:MainM,alias:'/'},
-        {path:'/SignUp',component:SignU},
-        {path:'/SignIn',component:SignI}
+        {
+            path:'/',
+            name:'home',
+            component:MainM,
+            alias:'/',
+            props: true
+        },
+        {
+            path:'/SignUp',
+            name:'SignUp',
+            component:SignU,
+            props: true
+        },
+        {
+            path:'/SignIn',
+            name:'SignIn',
+            component:SignI,
+            props: true
+        }
     ],
 });

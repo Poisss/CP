@@ -5,7 +5,7 @@
 <template>
     <div class="header">
         <div class="logo">
-            <router-link to="/Main" class="logo-div">
+            <router-link :to="{name:'home'}" class="logo-div">
                 <img src="../assets/logo_relp.svg" alt="" width="50">
             </router-link>
         </div>
@@ -13,10 +13,16 @@
 
         </div>
         <div class="login">
-            <router-link to="/SignUp">
+            <router-link :to="{
+                name:'SignUp',
+                params:id=1
+                }">
                 Регистрация
             </router-link>
-            <router-link to="/SignIn">
+            <router-link :to="{
+                name:'SignIn',
+                query:{id:'1'}
+                }">
                 Войти
             </router-link>
         </div>

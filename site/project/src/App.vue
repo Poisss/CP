@@ -11,7 +11,6 @@ import FooterM from './components/Footer.vue'
     </div>
     <div>
       <router-view>
-
       </router-view>
     </div>
     <div>

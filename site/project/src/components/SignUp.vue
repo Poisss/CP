@@ -1,5 +1,6 @@
 <script>
 export default{
+      
     data() {
         return {
             arrDay:[{title:'1',value:1},{title:'2',value:2},{title:'3',value:3},{title:'4',value:4},{title:'5',value:5},{title:'6',value:6},{title:'7',value:7},{title:'8',value:8},{title:'9',value:9},{title:'10',value:10},
@@ -32,7 +33,7 @@ export default{
 <template>
     
 <div class="field">
-    <h1>Регистрация</h1>
+    <h1>Регистрация{{rr}}</h1>
     <form>
         <div :class="inputFocus[0]===false ? 'input focus': 'input blur' ">
             <span class="title">Имя</span>
@@ -50,15 +51,15 @@ export default{
         <div class="select">
             <select v-model="day" :class="inputFocus[2]===false ? 'select_focus': 'select_blur' " @click="inputFocus[2] = !inputFocus[2]" @blur="inputFocus[2] = false">
                 <option disabled value="">День</option>
-                <option v-for="element in arrDay" v-bind:value="element.value">{{ element.title }}</option>
+                <option v-for="element in arrDay" v-bind:value="element.value" :key="element">{{ element.title }}</option>
             </select>
             <select v-model="month" :class="inputFocus[3]===false ? 'select_focus': 'select_blur' " @click="inputFocus[3] = !inputFocus[3]" @blur="inputFocus[3] = false">
                 <option disabled value="">Месяц</option>
-                <option v-for="element in arrMonth" v-bind:value="element.value">{{ element.title }}</option>
+                <option v-for="element in arrMonth" v-bind:value="element.value" :key="element">{{ element.title }}</option>
             </select>
             <select v-model="year" :class="inputFocus[4]===false ? 'select_focus': 'select_blur' " @click="inputFocus[4] = !inputFocus[4]" @blur="inputFocus[4] = false">
                 <option disabled value="">Год</option>
-                <option v-for="element in arrYear" v-bind:value="element.value">{{ element.title }}</option>
+                <option v-for="element in arrYear" v-bind:value="element.value" :key="element">{{ element.title }}</option>
             </select>
         </div>
         <span>Пол</span>
