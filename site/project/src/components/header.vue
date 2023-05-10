@@ -15,6 +15,9 @@ export default{
             check_history:null
         }
     },
+    mounted() {
+        
+    },
     methods:{
         search_enter(){
             this.$router.push({name:'Catalog',query:{find_desc:this.search,find_loc:this.location}});
@@ -111,7 +114,7 @@ export default{
                             <img src="../assets/location.png" alt="">
                         </div>
                         <div class="title title-gps">
-                            Текущее местоположение
+                            gps
                         </div>
                     </div>
                     <div v-if="location.trim()!=''">
