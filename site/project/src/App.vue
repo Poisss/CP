@@ -6,7 +6,7 @@ import FooterM from './components/Footer.vue'
 
 <template>
   <div class="block">
-    <div>
+    <div >
       <HeaderM/>
     </div>
     <div>

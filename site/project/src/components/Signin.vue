@@ -86,7 +86,7 @@ input:focus,input:active {
 }
 
 .input::before{
-    content: url("../assets/user-regular.svg");
+    content: url("../assets/icon/user-regular.svg");
     position: absolute;
     bottom: 29px;
     left: 15px;
@@ -94,7 +94,7 @@ input:focus,input:active {
     height: 14px;
 }
 .passwordBefore::before{
-    content: url('../assets/lock-solid.svg');
+    content: url('../assets/icon/lock-solid.svg');
 }
 .input::after{
     content: " ";
@@ -121,10 +121,10 @@ input:focus,input:active {
     z-index: 100;
 }
 .eye{
-    background-image: url('../assets/eye-regular.svg');
+    background-image: url('../assets/icon/eye-regular.svg');
 }
 .eye-slash{
-    background-image: url('../assets/eye-slash-regular.svg');
+    background-image: url('../assets/icon/eye-slash-regular.svg');
 }
 button{
     width: 390px;

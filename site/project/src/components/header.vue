@@ -6,9 +6,9 @@ export default{
             location: "Магнитогорск",
             search:"",
             search_history:[],
-            search_passive:[{img:'/src/assets/restaurants.png',title:'Рестораны'},{img:'/src/assets/delivery.png',title:'Доставка'},
-                            {img:'/src/assets/auto_services.png',title:'Авто ремонт'},{img:'/src/assets/hotel.png',title:'Отели'},
-                            {img:'/src/assets/park.png',title:'Парки'},{img:'/src/assets/gym.png',title:'Спортзал'},],
+            search_passive:[{img:'/src/assets/icon/restaurants.png',title:'Рестораны'},{img:'/src/assets/icon/delivery.png',title:'Доставка'},
+                            {img:'/src/assets/icon/auto_services.png',title:'Авто ремонт'},{img:'/src/assets/icon/hotel.png',title:'Отели'},
+                            {img:'/src/assets/icon/park.png',title:'Парки'},{img:'/src/assets/icon/gym.png',title:'Спортзал'},],
             search_request:[{img:'',title:'Бд запросы'}],
             location_request:[{img:'',title:'Бд запросы'}],
             check_passive:null,
@@ -43,11 +43,11 @@ export default{
                 })
                 if(this.check_passive==0 && this.check_history==0){
                     if(this.search_history.length<5){
-                        this.search_history.unshift({img:'/src/assets/watch.svg',title:x})
+                        this.search_history.unshift({img:'/src/assets/icon/watch.svg',title:x})
                     }
                     else{
                         this.search_history.pop();
-                        this.search_history.unshift({img:'/src/assets/watch.svg',title:x})
+                        this.search_history.unshift({img:'/src/assets/icon/watch.svg',title:x})
                     }
                 }  
             }
@@ -64,7 +64,7 @@ export default{
     <div class="header">
         <div class="logo">
             <router-link :to="{name:'home'}" class="logo-div">
-                <img src="../assets/logo_relp.svg" alt="" width="50">
+                <img src="../assets/icon/logo_relp.svg" alt="" width="50">
             </router-link>
         </div>
         <div class="nav">
@@ -111,7 +111,7 @@ export default{
                 <div class="option option-two" v-if="btn_searc_focus[1]">
                     <div class="option_value option_value_one">
                         <div class="preview">
-                            <img src="../assets/location.png" alt="">
+                            <img src="../assets/icon/location.png" alt="">
                         </div>
                         <div class="title title-gps">
                             gps
@@ -224,7 +224,7 @@ input:focus,input:active {
     cursor: pointer;
 }
 .search::before{
-    content: url("../assets/search.svg");
+    content: url("../assets/icon/search.svg");
     width: 14px;
     height: 14px;
     position: absolute;

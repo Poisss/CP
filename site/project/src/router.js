@@ -4,6 +4,9 @@ import SignI from './components/Signin.vue'
 import SignU from './components/SignUp.vue'
 import MainM from './components/Main.vue'
 import catalog from './components/catalog.vue'
+import product from './components/product.vue'
+import profile from './components/profile.vue'
+import profileView from './components/profileView.vue'
 
 export default createRouter({
     history : createWebHashHistory(
@@ -34,6 +37,25 @@ export default createRouter({
             name:'Catalog',
             component:catalog,
             props: true
+        },
+        {
+            path:'/user',
+            name:'profile',
+            component:profile,
+            props: true
+        },
+        {
+            path:'/user_details',
+            name:'profileView',
+            component:profileView,
+            props: true
+        },
+        {
+            path:'/Product',
+            name:'Product',
+            component:product,
+            props: true
         }
+
     ],
 });

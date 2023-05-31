@@ -67,24 +67,24 @@ hr{
 }
 .tg{
     grid-area: tg;
-    background: url('../assets/telega.svg') no-repeat center;
+    background: url('../assets/icon/telega.svg') no-repeat center;
 }
 .tg:hover{
-    background: url('../assets/telega2.svg') no-repeat center;
+    background: url('../assets/icon/telega2.svg') no-repeat center;
 }
 .vk{
     grid-area: vk;
-    background: url('../assets/vk.svg') no-repeat center;
+    background: url('../assets/icon/vk.svg') no-repeat center;
 }
 .vk:hover{
-    background: url('../assets/vk2.svg') no-repeat center;
+    background: url('../assets/icon/vk2.svg') no-repeat center;
 }
 .dis{
     grid-area: dis;
-    background: url('../assets/dis.svg') no-repeat center;
+    background: url('../assets/icon/dis.svg') no-repeat center;
 }
 .dis:hover{
-    background: url('../assets/dis2.svg') no-repeat center;
+    background: url('../assets/icon/dis2.svg') no-repeat center;
 }
 .top{
     grid-area: top;

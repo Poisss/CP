@@ -132,7 +132,7 @@ input:focus,input:active {
 }
 
 .input::before{
-    content: url("../assets/user-regular.svg");
+    content: url("../assets/icon/user-regular.svg");
     position: absolute;
     bottom: 29px;
     left: 15px;
@@ -140,10 +140,10 @@ input:focus,input:active {
     height: 14px;
 }
 .emailBefore::before{
-    content: url('../assets/envelope-regular.svg');
+    content: url('../assets/icon/envelope-regular.svg');
 }
 .passwordBefore::before{
-    content: url('../assets/lock-solid.svg');
+    content: url('../assets/icon/lock-solid.svg');
 }
 .input::after{
     content: " ";
@@ -170,10 +170,10 @@ input:focus,input:active {
     z-index: 100;
 }
 .eye{
-    background-image: url('../assets/eye-regular.svg');
+    background-image: url('../assets/icon/eye-regular.svg');
 }
 .eye-slash{
-    background-image: url('../assets/eye-slash-regular.svg');
+    background-image: url('../assets/icon/eye-slash-regular.svg');
 }
 .radio{
     display: grid;
@@ -241,10 +241,10 @@ select:not([multiple]) {
   background-size: 0.65em auto;
 }
 .select_focus:not([multiple]) {
-    background-image: url("../assets/caret-down-solid.svg");
+    background-image: url("../assets/icon/caret-down-solid.svg");
 }
 .select_blur:not([multiple]) {
-    background-image: url("../assets/caret-up-solid.svg");
+    background-image: url("../assets/icon/caret-up-solid.svg");
 }
 button{
     width: 390px;
