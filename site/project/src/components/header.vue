@@ -302,15 +302,17 @@ input:focus,input:active {
     align-items: center;
 }
 .sign{
-    border: 1px solid white;
+    
     border-radius: 5px;
     padding: 10px;
     color: white;
 }
 .signup{
     grid-area: signup;
+    border: 1px solid white;
 }
 .signin{
+    background-color: red;
     grid-area: signin;
 }
 </style>

@@ -2,7 +2,10 @@
 export default{
     data() {
         return {
-            slider:[{title:'Хочешь перекусить?',img:'/src/assets/img/img4.jpg',search:'Рестораны',category:'Рестрораны'},{title:'Хочешь арендовать машину?',img:'/src/assets/img/img3.jpg',search:'Машины',category:'Машины'},{title:'Отдых',img:'/src/assets/img/img5.jpg',search:'Отели',category:'Отели'},{title:'Любишь животных?',img:'/src/assets/img/img6.jpg',search:'Животные',category:'Животные'}],
+            slider:[{title:'Хочешь перекусить?',img:'/src/assets/img/img4.jpg',search:'Рестораны',category:'Рестрораны'},
+                    {title:'Хочешь арендовать машину?',img:'/src/assets/img/img3.jpg',search:'Машины',category:'Машины'},
+                    {title:'Не знаешь, где переночевать?',img:'/src/assets/img/img5.jpg',search:'Отели',category:'Отели'},
+                    {title:'Любишь животных?',img:'/src/assets/img/img6.jpg',search:'Животные',category:'Животные'}],
             slider_index:0,
             sliderInterval: null,
             sliderIntervalHeight:null,
@@ -271,7 +274,7 @@ export default{
                                 <img :src="card.product_img" alt="">
                             </div>
                             <div class="activity-block-main-content">
-                                <router-link :to="{name:'Product',query:{userid:card.product_id}}"  class="activity-block-main-title">
+                                <router-link :to="{name:'Product',query:{product_id:card.product_id}}"  class="activity-block-main-title">
                                     {{ card.product_title }}
                                 </router-link>
                                 <div  class="activity-block-main-grade">
