@@ -1,23 +1,25 @@
 <script>
 import ChildComponent from './catalogImg.vue';
+import ChildOpeningTimes from './catalogOpeningTimes.vue';
 export default{  
     components:{
-        ChildComponent
+        ChildComponent,
+        ChildOpeningTimes
     },
       data() {
           return {
               categoryTag:['Бургеры','Лапша','Сэндвичи','Хот-дог','Суп','Паста','Бобы','Стейк','Плов','Круасан'],
               categoryChange:1,
-              category_product:[{product_id:'1',product_title:'Много мяса',product_grade:'5',product_grade_count:'264',product_tag:['Кофе','Чай'],product_img:['/src/assets/img/img4.jpg','/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],product_close:'',product_open:'',product_description:''},
-                                {product_id:'2',product_title:'',product_grade:'3',product_grade_count:'744',product_tag:['',''],product_img:['/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],product_close:'',product_open:'',product_description:''},
-                                {product_id:'3',product_title:'',product_grade:'2',product_grade_count:'416',product_tag:['',''],product_img:['/src/assets/img/banner2.jpg'],product_close:'',product_open:'',product_description:''},
-                                {product_id:'4',product_title:'',product_grade:'5',product_grade_count:'163',product_tag:['',''],product_img:['/src/assets/img/banner1.jpg'],product_close:'',product_open:'',product_description:''},
-                                {product_id:'5',product_title:'',product_grade:'4',product_grade_count:'256',product_tag:['',''],product_img:['',''],product_close:'',product_open:'',product_description:''},
-                                {product_id:'6',product_title:'',product_grade:'2',product_grade_count:'783',product_tag:['',''],product_img:['',''],product_close:'',product_open:'',product_description:''},
-                                {product_id:'7',product_title:'',product_grade:'1',product_grade_count:'345',product_tag:['',''],product_img:['',''],product_close:'',product_open:'',product_description:''},
-                                {product_id:'8',product_title:'',product_grade:'5',product_grade_count:'129',product_tag:['',''],product_img:['',''],product_close:'',product_open:'',product_description:''},
-                                {product_id:'9',product_title:'',product_grade:'3',product_grade_count:'335',product_tag:['',''],product_img:['',''],product_close:'',product_open:'',product_description:''},
-                                {product_id:'10',product_title:'',product_grade:'4',product_grade_count:'842',product_tag:['',''],product_img:['',''],product_close:'',product_open:'',product_description:''}]
+              category_product:[{product_id:'1',product_title:'Много мяса',product_grade:'5',product_grade_count:'264',product_tag:['Кофе','Чай'],product_img:['/src/assets/img/img4.jpg','/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
+                                {product_id:'2',product_title:'',product_grade:'3',product_grade_count:'744',product_tag:['',''],product_img:['/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
+                                {product_id:'3',product_title:'',product_grade:'2',product_grade_count:'416',product_tag:['',''],product_img:['/src/assets/img/banner2.jpg'],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
+                                {product_id:'4',product_title:'',product_grade:'5',product_grade_count:'163',product_tag:['',''],product_img:['/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
+                                {product_id:'5',product_title:'',product_grade:'4',product_grade_count:'256',product_tag:['',''],product_img:['',''],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
+                                {product_id:'6',product_title:'',product_grade:'2',product_grade_count:'783',product_tag:['',''],product_img:['',''],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
+                                {product_id:'7',product_title:'',product_grade:'1',product_grade_count:'345',product_tag:['',''],product_img:['',''],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
+                                {product_id:'8',product_title:'',product_grade:'5',product_grade_count:'129',product_tag:['',''],product_img:['',''],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
+                                {product_id:'9',product_title:'',product_grade:'3',product_grade_count:'335',product_tag:['',''],product_img:['',''],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
+                                {product_id:'10',product_title:'',product_grade:'4',product_grade_count:'842',product_tag:['',''],product_img:['',''],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''}]
           }
       },
       methods:{
@@ -143,9 +145,7 @@ export default{
                             {{ tag }}
                         </div>
                         <div class="activity-block-main-time">
-                            <div class="activity-block-main-time-open">
-                                {{  }}
-                            </div>
+                            <ChildOpeningTimes :OpeningTimes="product.openingTimes"></ChildOpeningTimes>
                         </div>
                     </div>
                 </div>

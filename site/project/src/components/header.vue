@@ -238,6 +238,7 @@ input:focus,input:active {
     display: grid;
     grid-template-columns: 1fr 1fr 40px;
     grid-template-areas: "option-one option-two .";
+    z-index: 5;
 }
 .option{
     background: white;
