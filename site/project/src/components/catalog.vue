@@ -10,7 +10,7 @@ export default{
           return {
               categoryTag:['Бургеры','Лапша','Сэндвичи','Хот-дог','Суп','Паста','Бобы','Стейк','Плов','Круасан'],
               categoryChange:1,
-              category_product:[{product_id:'1',product_title:'Много мяса',product_grade:'5',product_grade_count:'264',product_tag:['Кофе','Чай'],product_img:['/src/assets/img/img4.jpg','/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
+              category_product:[{product_id:'1',product_title:'Много мяса',product_grade:'5',product_grade_count:'264',product_tag:['Кофе','Чай'],product_img:['/src/assets/img/img4.jpg','/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Понедельник', opening: '9:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '9:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
                                 {product_id:'2',product_title:'',product_grade:'3',product_grade_count:'744',product_tag:['',''],product_img:['/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
                                 {product_id:'3',product_title:'',product_grade:'2',product_grade_count:'416',product_tag:['',''],product_img:['/src/assets/img/banner2.jpg'],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
                                 {product_id:'4',product_title:'',product_grade:'5',product_grade_count:'163',product_tag:['',''],product_img:['/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },],product_description:''},
@@ -96,20 +96,37 @@ export default{
 
 <template>
     <div class="field">
-        <div class="category_header">
-            <h2>
-                По запросу найдено <div class="product_count">{{ category_product.length }}</div>
-            </h2>
-            <div class="category_tag" v-for="tag in categoryTag">
-                {{ tag }}
-            </div>
-            
-        </div>
         <div class="category_main">
             <div class="category_main_filter">
+                <h2>
+                    Фильтры
+                </h2>
+                <div class="category_main_filter_money">
+                    <div class="category_main_filter_money_block">
+                        <div class="category_main_filter_money_block_ruble">
 
+                        </div>
+                        <div class="category_main_filter_money_block_ruble">
+
+                        </div>
+                        <div class="category_main_filter_money_block_ruble">
+
+                        </div>
+                        <div class="category_main_filter_money_block_ruble">
+
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="category_main_product">
+                <div class="category_header">
+                    <h2>
+                        По запросу найдено <div class="product_count">{{ category_product.length }}</div>
+                    </h2>
+                    <div class="category_tag" v-for="tag in categoryTag">
+                        {{ tag }}
+                    </div>
+                </div>
                 <div class="category_main_product_block" v-for="(product,index) in category_product" :key="index">
                     <div class="category_main_product_block-img">
                         <ChildComponent :dataProp="product.product_img" :dataPropId="product.product_id"></ChildComponent>
@@ -168,6 +185,9 @@ export default{
     font-weight: 500;
     font-size: 12px;
 }
+.category_header{
+    margin-bottom: 10px;
+}
 .category_tag{
     display: inline-block;
     background: rgb(242,245,249);
@@ -185,13 +205,46 @@ export default{
 
 .category_main{
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 200px 1fr;
     margin-top: 30px;
     min-height: 250px;
     padding: 24px;
+    grid-column-gap: 50px;
 }
 .category_main_filter{
     
+}
+.category_main_filter_money{
+    border-bottom: 1px solid rgb(128, 128, 128,0.3);
+}
+.category_main_filter_money_block{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 20px 10px;
+    height: 30px;
+    border: 1px solid rgb(128, 128, 128,0.3);
+    border-radius: 20px;
+    
+}
+.category_main_filter_money_block_ruble{
+    background: url('../assets/icon/ruble.svg'),url('../assets/icon/ruble.svg'),url('../assets/icon/ruble.svg'),url('../assets/icon/ruble.svg') ;
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+}
+.category_main_filter_money_block_ruble{
+    
+}
+.category_main_filter_money_block_ruble:nth-child(2){
+    border-left: 1px solid rgb(128, 128, 128,0.3);
+}
+.category_main_filter_money_block_ruble:nth-child(3){
+
+}
+.category_main_filter_money_block_ruble:nth-child(4){
+
+}
+.category_main_filter_money_block_ruble:not(:first-child,:last-child){
+    border-right: 1px solid rgb(128, 128, 128,0.3);
 }
 .category_main_product{
     
@@ -202,6 +255,7 @@ export default{
     padding: 20px;
     min-height: 200px;
     border-bottom: 1px solid rgb(128, 128, 128,0.3);
+    
 }
 .category_main_product_block:hover{
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);

@@ -46,7 +46,13 @@ export default {
         <span class="activity-block-main-time-open">Открыто</span> до {{ closingTime }}
     </div>
     <div class="activity-block-main-time" v-else>
-        <span class="activity-block-main-time-closed">Закрыто</span>, откроется в {{ openingTime }}
+        <div v-if="openingTime =='закрыто'">
+            <span class="activity-block-main-time-closed">Закрыто</span>
+        </div>
+        <div v-else>
+            <span class="activity-block-main-time-closed">Закрыто</span>, откроется в {{ openingTime }}
+        </div>
+        
     </div>
 </template>
 <style scoped>

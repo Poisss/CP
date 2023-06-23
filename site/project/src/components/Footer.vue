@@ -9,7 +9,7 @@
                 <a href="https://t.me/Ffifik" class="icon tg"></a>
                 <a href="https://vk.com/id181064620" class="icon vk"></a>
                 <a href="https://discord.gg/4ZykNB8X" class="icon dis"></a>
-                <a href="#" class="top"><h2>top</h2></a>
+                <a href="" class="top"><h2>top</h2></a>
             </div>
             <div class="content">
                 <div>
