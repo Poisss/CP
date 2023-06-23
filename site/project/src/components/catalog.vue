@@ -104,16 +104,22 @@ export default{
                 <div class="category_main_filter_money">
                     <div class="category_main_filter_money_block">
                         <div class="category_main_filter_money_block_ruble">
-
+                            <img src="../assets/icon/ruble.svg" alt="">
                         </div>
                         <div class="category_main_filter_money_block_ruble">
-
+                            <img src="../assets/icon/ruble.svg" alt="">
+                            <img src="../assets/icon/ruble.svg" alt="">                             
                         </div>
                         <div class="category_main_filter_money_block_ruble">
-
+                            <img src="../assets/icon/ruble.svg" alt="">
+                            <img src="../assets/icon/ruble.svg" alt="">
+                            <img src="../assets/icon/ruble.svg" alt="">
                         </div>
                         <div class="category_main_filter_money_block_ruble">
-
+                            <img src="../assets/icon/ruble.svg" alt="">
+                            <img src="../assets/icon/ruble.svg" alt="">
+                            <img src="../assets/icon/ruble.svg" alt="">
+                            <img src="../assets/icon/ruble.svg" alt="">
                         </div>
                     </div>
                 </div>
@@ -224,24 +230,22 @@ export default{
     height: 30px;
     border: 1px solid rgb(128, 128, 128,0.3);
     border-radius: 20px;
-    
+    overflow: hidden;
 }
 .category_main_filter_money_block_ruble{
-    background: url('../assets/icon/ruble.svg'),url('../assets/icon/ruble.svg'),url('../assets/icon/ruble.svg'),url('../assets/icon/ruble.svg') ;
-    background-size: 10px 10px;
-    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.category_main_filter_money_block_ruble{
-    
+.category_main_filter_money_block_ruble img{
+    display: block;
+    width: 9px;
+}
+.category_main_filter_money_block_ruble:hover{
+    background: rgb(226,226,230);
 }
 .category_main_filter_money_block_ruble:nth-child(2){
     border-left: 1px solid rgb(128, 128, 128,0.3);
-}
-.category_main_filter_money_block_ruble:nth-child(3){
-
-}
-.category_main_filter_money_block_ruble:nth-child(4){
-
 }
 .category_main_filter_money_block_ruble:not(:first-child,:last-child){
     border-right: 1px solid rgb(128, 128, 128,0.3);
