@@ -9,7 +9,7 @@ export default {
     },
     computed: {
         isOpen() {
-            const today = new Date().getDay() - 1;
+            const today = new Date().getDay();
             const openingHours = this.OpeningTimes[today];
             if (openingHours.opening === 'закрыто') {
                 return false;
@@ -34,37 +34,38 @@ export default {
             return openingTime < new Date() && closingTime > new Date();
         },
         openingTime() {
-            const today = new Date().getDay() - 1;
+            const today = new Date().getDay();
             const openingHours = this.OpeningTimes[today];
 
             return openingHours.opening;
         },
         closingTime() {
-            const today = new Date().getDay() - 1;
+            const today = new Date().getDay();
             const openingHours = this.OpeningTimes[today];
-
+            
             return openingHours.closing;
+        },
+        Time(){
+            const time=new Date();
+            const hours=time.getHours();
+            const minutes=time.getMinutes();
+            return `${hours}:${minutes}`;
         },
         nextDayOpeningTime(){
             let nexDay=new Date();
             nexDay.setDate(nexDay.getDate()+1);        
-            const nextDayIndex=nexDay.getDay()-1;
-            const openingHours=this.OpeningTimes[nextDayIndex>=0?nextDayIndex:6];       
+            const nextDayIndex=nexDay.getDay();
+            const openingHours=this.OpeningTimes[nextDayIndex>=0?nextDayIndex:6];
+                   
             return openingHours.opening;
         },
-        nextDayName() {
-            let nextDay = new Date();
-            nextDay.setDate(nextDay.getDate() + 1);
-            const nextDayIndex = nextDay.getDay() - 1;
-            const openingHours = this.openingTimes[nextDayIndex >= 0 ? nextDayIndex : 6];
-            return openingHours.day;
-        },
+        
     },
 }
 </script>
 <template>
     <div class="activity-block-main-time" v-if="isOpen">
-        <div v-if="openingTime == 'открыто'">
+        <div v-if="openingTime === 'открыто'">
             <span class="activity-block-main-time-open">Открыто</span>
         </div>
         <div v-else>
@@ -72,14 +73,21 @@ export default {
         </div>
     </div>
     <div class="activity-block-main-time" v-else>
-        <div v-if="openingTime =='закрыто' && nextDayOpeningTime=='закрыто'">
+        
+        <div v-if="openingTime === 'закрыто' && nextDayOpeningTime === 'закрыто'">
             <span class="activity-block-main-time-closed">Закрыто</span>
         </div>
-        <div v-else-if="openingTime=='закрыто'">
-            <span class="activity-block-main-time-closed">Закрыто</span>, откроется в {{ openingTime }}
+        <div v-else-if="openingTime === 'закрыто'">
+            <span class="activity-block-main-time-closed">Закрыто</span>, откроется в завтро 
+            <span v-if="nextDayOpeningTime !== 'открыто'">в {{nextDayOpeningTime }}</span>
+        </div>
+        <div v-else-if="openingTime>Time">
+            <span class="activity-block-main-time-closed">Закрыто</span>, откроется сегодня в {{
+                openingTime }}
         </div>
         <div v-else>
-            <span class="activity-block-main-time-closed">Закрыто</span>, откроется в {{ nextDayOpeningTime }}
+            <span class="activity-block-main-time-closed">Закрыто</span>, откроется завтро 
+            <span v-if="nextDayOpeningTime !== 'открыто'">в {{nextDayOpeningTime }}</span>
         </div>
     </div>
 </template>
