@@ -294,8 +294,8 @@ export default{
                                         <img :src="gradeMethods5(card.user_grade)" alt="">
                                     </div>
                                 </div>
-                                <div  class="activity-block-main-text">
-                                    {{ card.user_comment_text }} 
+                                <div class="activity-block-main-text">
+                                    {{ card.user_comment_text }}
                                 </div>
                             </div>
                         </div>

@@ -46,10 +46,20 @@ export default {
             return openingHours.closing;
         },
         Time(){
+            const today = new Date().getDay();
             const time=new Date();
             const hours=time.getHours();
             const minutes=time.getMinutes();
-            return `${hours}:${minutes}`;
+            const time1= `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+            const time2=`${this.OpeningTimes[today].opening}`;
+            const date1 = new Date(`2000-01-01T${time1}:00Z`);
+            const date2 = new Date(`2000-01-01T${time2}:00Z`);
+            if (date1.getTime() > date2.getTime()) {
+                return false;
+            } 
+            else {
+                return true;
+            }
         },
         nextDayOpeningTime(){
             let nexDay=new Date();
@@ -81,7 +91,7 @@ export default {
             <span class="activity-block-main-time-closed">Закрыто</span>, откроется в завтро 
             <span v-if="nextDayOpeningTime !== 'открыто'">в {{nextDayOpeningTime }}</span>
         </div>
-        <div v-else-if="openingTime>Time">
+        <div v-else-if="Time">
             <span class="activity-block-main-time-closed">Закрыто</span>, откроется сегодня в {{
                 openingTime }}
         </div>

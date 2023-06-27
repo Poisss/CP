@@ -18,6 +18,15 @@ export default{
     mounted() {
         
     },
+    computed:{
+        componentNumber() {
+        switch (this.$route.name) {
+          case 'home': return 1
+          case 'Catalog': return 2
+          default: return ''
+        }
+      }
+    },
     methods:{
         search_enter(){
             this.$router.push({name:'Catalog',query:{find_desc:this.search,find_loc:this.location}});
@@ -114,7 +123,7 @@ export default{
                             <img src="../assets/icon/location.png" alt="">
                         </div>
                         <div class="title title-gps">
-                            gps
+                            gps{{ componentNumber }}
                         </div>
                     </div>
                     <div v-if="location.trim()!=''">
