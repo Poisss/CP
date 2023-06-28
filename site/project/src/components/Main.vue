@@ -357,7 +357,7 @@ a{
 }
 .field{
     max-width: 1200px;
-    padding: 20px;
+    padding: 40px;
     margin: 0 auto;
 }
 .block-main{
@@ -365,7 +365,7 @@ a{
 }
 .slider{
     position: relative;
-    height: 600px;
+    height: 700px;
     color: white;
     background-position: 50%;
     background-size: cover;
@@ -374,7 +374,7 @@ a{
 .field_slider{
     display: grid;
     grid-template-columns: 70px 1fr;
-    padding-top: 100px;
+    padding-top: 170px;
 }
 .slider_title{
     margin-top: 5px;

@@ -10,7 +10,7 @@ export default{
           return {
               categoryTag:['Бургеры','Лапша','Сэндвичи','Хот-дог','Суп','Паста','Бобы','Стейк','Плов','Круасан'],
               categoryChange:1,
-              category_product:[{product_id:'1',product_title:'Много мяса',product_grade:'5',product_grade_count:'264',product_tag:['Кофе','Чай'],product_img:['/src/assets/img/img4.jpg','/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Воскресенье', opening: '10:00', closing: '12:00' },{ day: 'Понедельник', opening: '07:00', closing: '08:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: 'закрыто', closing: 'закрыто' },{ day: 'Четверг', opening: 'открыто', closing: 'открыто' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '08:00', closing: '09:00' },],product_description:''},
+              category_product:[{product_id:'1',product_title:'Много мяса',product_grade:'5',product_grade_count:'264',product_tag:['Кофе','Чай'],product_img:['/src/assets/img/img4.jpg','/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Воскресенье', opening: '10:00', closing: '12:00' },{ day: 'Понедельник', opening: '07:00', closing: '08:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: 'закрыто', closing: 'закрыто' },{ day: 'Четверг', opening: 'открыто', closing: 'открыто' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '08:00', closing: '09:00' },],product_description:'lorem fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef'},
                                 {product_id:'2',product_title:'',product_grade:'3',product_grade_count:'744',product_tag:['',''],product_img:['/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },{ day: 'Понедельник', opening: '14:00', closing: '18:00' },{ day: 'Вторник', opening: '11:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: 'открыто', closing: 'открыто' },],product_description:''},
                                 {product_id:'3',product_title:'',product_grade:'2',product_grade_count:'416',product_tag:['',''],product_img:['/src/assets/img/banner2.jpg'],openingTimes: [{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },{ day: 'Понедельник', opening: '10:00', closing: '18:00' },{ day: 'Вторник', opening: 'закрыто', closing: 'закрыто' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '08:00', closing: '10:00' },],product_description:''},
                                 {product_id:'4',product_title:'',product_grade:'5',product_grade_count:'163',product_tag:['',''],product_img:['/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Воскресенье', opening: '09:00', closing: '14:00' },{ day: 'Понедельник', opening: 'закрыто', closing: 'закрыто' },{ day: 'Вторник', opening: '07:00', closing: '08:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '14:00', closing: '16:00' },],product_description:''},
@@ -124,9 +124,8 @@ export default{
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                </div>
+                </div> 
+            </div>
             <div class="category_main_product">
                 <div class="category_header">
                     <h2>
@@ -173,6 +172,14 @@ export default{
                         <div class="activity-block-main-time">
                             <ChildOpeningTimes :OpeningTimes="product.openingTimes"></ChildOpeningTimes>
                         </div>
+                        <div class="activity-block-main-description">
+                            <div class="activity-block-main-description-img">
+                                <img src="../assets/icon/description.svg" alt="">
+                            </div>
+                            <div class="activity-block-main-description-text">
+                                {{ product.product_description }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -185,6 +192,7 @@ export default{
 .field{
     max-width: 1200px;
     padding: 20px;
+    padding-top: 0;
     margin: 0 auto;
 }
 .product_count{
@@ -216,9 +224,9 @@ export default{
 .category_main{
     display: grid;
     grid-template-columns: 200px 1fr;
-    margin-top: 30px;
     min-height: 250px;
     padding: 24px;
+    padding-top: 0;
     grid-column-gap: 50px;
 }
 .category_main_filter{
@@ -226,7 +234,7 @@ export default{
 }
 .category_main_filter_block{
     position: sticky;
-    top: 0px;
+    top: 160px;
 }
 .category_main_filter_money{
     border-bottom: 1px solid rgb(128, 128, 128,0.3);
@@ -259,7 +267,7 @@ export default{
     border-right: 1px solid rgb(128, 128, 128,0.3);
 }
 .category_main_product{
-    
+    margin-top: 140px;
 }
 .category_main_product_block{
     display: grid;
@@ -319,5 +327,18 @@ export default{
     font-size: 11px;
     font-weight: 700;
     margin-bottom: 5px;
+}
+.activity-block-main-description img{
+    position: absolute;
+    top: 5px;
+    display: block;
+    width: 15px;
+}
+.activity-block-main-description{
+    position: relative;
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    grid-template-rows: 75px;
+    overflow: hidden;
 }
 </style>

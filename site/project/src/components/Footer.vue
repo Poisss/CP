@@ -9,7 +9,6 @@
                 <a href="https://t.me/Ffifik" class="icon tg"></a>
                 <a href="https://vk.com/id181064620" class="icon vk"></a>
                 <a href="https://discord.gg/4ZykNB8X" class="icon dis"></a>
-                <a href="" class="top"><h2>top</h2></a>
             </div>
             <div class="content">
                 <div>
@@ -52,7 +51,7 @@ hr{
 .field{
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
     color: #333333;
 }
 .social{

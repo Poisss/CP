@@ -15,19 +15,34 @@ export default{
             check_history:null
         }
     },
-    mounted() {
+    mounted() {    
         
+    },
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            this.search_router();
+         vm.myMethod();
+       });
     },
     computed:{
         componentNumber() {
         switch (this.$route.name) {
-          case 'home': return 1
-          case 'Catalog': return 2
+          case 'home': return '1'
+          case 'Catalog': return '2'
+          case 'SignUp': return '3'
+          case 'SignIn': return '3'
           default: return ''
         }
       }
     },
     methods:{
+        search_router(){
+            switch (this.$route.name) {
+            case 'Catalog': return this.search=this.$route.query.find_desc;    
+            case 'home': return this.search='';
+            default: return this.search='';
+            }
+        },
         search_enter(){
             this.$router.push({name:'Catalog',query:{find_desc:this.search,find_loc:this.location}});
         },
@@ -70,13 +85,13 @@ export default{
 </script>
 
 <template>
-    <div class="header">
+    <div class="header" id="header" :style="{position: componentNumber==1?'absolute':componentNumber==2?'fixed':'' ,background: componentNumber==1?'none':'',border:componentNumber==1?'none':'',padding:componentNumber==3?'0':''}">
         <div class="logo">
             <router-link :to="{name:'home'}" class="logo-div">
                 <img src="../assets/icon/logo_relp.svg" alt="" width="50">
             </router-link>
         </div>
-        <div class="nav">
+        <div class="nav" :style="{display:componentNumber==3?'none':''}">
             <div class="nav-grid">
                 <div class="btn-search btn-search-one nav-block">
                     <input type="text" v-model="search" @keyup.enter="search_enter(),add_history(search)" class="nav-block-one" placeholder="Ресторан, отель, коцерт" @focus="btn_searc_focus[0]=true" @blur="btn_searc_focus[0]=false">
@@ -136,11 +151,11 @@ export default{
                 </div>
             </div>
         </div>
-        <div class="login">
+        <div class="login" :style="{display:componentNumber==3?'none':''}">
             <router-link :to="{
                 name:'SignUp',
                 params:id=1
-                }" class="sign signup">
+                }" class="sign signup" :style="{color: componentNumber==1?'white':'',border: componentNumber==1?'1px solid white':''}">
                 Регистрация
             </router-link>
             <router-link :to="{
@@ -155,11 +170,13 @@ export default{
 
 <style scoped>
 .header{
+    z-index: 10;
     width: 100vw;
-    background: rgb(127, 255, 212);
+    top: 0;
+    background: white;
     position: relative;
     min-height: 100px;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid rgb(128, 128, 128,0.2);
     display: grid;
     grid-template-columns: minmax(200px,1fr) minmax(300px,968px) minmax(300px,1fr);
     padding: 24px 0;
@@ -172,7 +189,7 @@ export default{
     align-items: center;
     position: absolute;
     top: 0px;
-    left: 75px;
+    left: 45px;
     height: 100%;
     cursor: pointer;
 }
@@ -319,7 +336,8 @@ input:focus,input:active {
 }
 .signup{
     grid-area: signup;
-    border: 1px solid white;
+    border: 1px solid rgb(128, 128, 128,0.2);
+    color: black;
 }
 .signin{
     background-color: red;
