@@ -8,9 +8,9 @@ export default{
     },
       data() {
           return {
-              categoryTag:['Бургеры','Лапша','Сэндвичи','Хот-дог','Суп','Паста','Бобы','Стейк','Плов','Круасан'],
-              categoryChange:1,
-              category_product:[{product_id:'1',product_title:'Много мяса',product_grade:'5',product_grade_count:'264',product_tag:['Кофе','Чай'],product_img:['/src/assets/img/img4.jpg','/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Воскресенье', opening: '10:00', closing: '12:00' },{ day: 'Понедельник', opening: '07:00', closing: '08:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: 'закрыто', closing: 'закрыто' },{ day: 'Четверг', opening: 'открыто', closing: 'открыто' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '08:00', closing: '09:00' },],product_description:'lorem fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef'},
+                categoryTag:['Бургеры','Лапша','Сэндвичи','Хот-дог','Суп','Паста','Бобы','Стейк','Плов','Круасан'],
+                categoryChange:1,
+                category_product:[{product_id:'1',product_title:'Много мяса',product_grade:'5',product_grade_count:'264',product_tag:['Кофе','Чай'],product_img:['/src/assets/img/img4.jpg','/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Воскресенье', opening: '10:00', closing: '12:00' },{ day: 'Понедельник', opening: '07:00', closing: '08:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: 'закрыто', closing: 'закрыто' },{ day: 'Четверг', opening: 'открыто', closing: 'открыто' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '08:00', closing: '09:00' },],product_description:'lorem fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef'},
                                 {product_id:'2',product_title:'',product_grade:'3',product_grade_count:'744',product_tag:['',''],product_img:['/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },{ day: 'Понедельник', opening: '14:00', closing: '18:00' },{ day: 'Вторник', opening: '11:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: 'открыто', closing: 'открыто' },],product_description:''},
                                 {product_id:'3',product_title:'',product_grade:'2',product_grade_count:'416',product_tag:['',''],product_img:['/src/assets/img/banner2.jpg'],openingTimes: [{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },{ day: 'Понедельник', opening: '10:00', closing: '18:00' },{ day: 'Вторник', opening: 'закрыто', closing: 'закрыто' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '08:00', closing: '10:00' },],product_description:''},
                                 {product_id:'4',product_title:'',product_grade:'5',product_grade_count:'163',product_tag:['',''],product_img:['/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Воскресенье', opening: '09:00', closing: '14:00' },{ day: 'Понедельник', opening: 'закрыто', closing: 'закрыто' },{ day: 'Вторник', opening: '07:00', closing: '08:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '14:00', closing: '16:00' },],product_description:''},
@@ -19,8 +19,17 @@ export default{
                                 {product_id:'7',product_title:'',product_grade:'1',product_grade_count:'345',product_tag:['',''],product_img:['',''],openingTimes: [{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },],product_description:''},
                                 {product_id:'8',product_title:'',product_grade:'5',product_grade_count:'129',product_tag:['',''],product_img:['',''],openingTimes: [{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },],product_description:''},
                                 {product_id:'9',product_title:'',product_grade:'3',product_grade_count:'335',product_tag:['',''],product_img:['',''],openingTimes: [{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },],product_description:''},
-                                {product_id:'10',product_title:'',product_grade:'4',product_grade_count:'842',product_tag:['',''],product_img:['',''],openingTimes: [{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },],product_description:''}]
+                                {product_id:'10',product_title:'',product_grade:'4',product_grade_count:'842',product_tag:['',''],product_img:['',''],openingTimes: [{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },],product_description:''},
+                                {product_id:'11',product_title:'',product_grade:'4',product_grade_count:'842',product_tag:['',''],product_img:['',''],openingTimes: [{ day: 'Воскресенье', opening: 'закрыто', closing: 'закрыто' },{ day: 'Понедельник', opening: '09:00', closing: '18:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: '09:00', closing: '18:00' },{ day: 'Четверг', opening: '09:00', closing: '18:00' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '10:00', closing: '16:00' },],product_description:''}],
+                category_product_array:[],
+                category_product_length:0,
+                category_product_active:1,
+                category_product_ten:0
           }
+      },
+      mounted(){
+        this.category_product_array=this.category_product.slice(this.category_product_ten,this.category_product_ten+10);
+        this.category_product_length=Math.ceil(this.category_product.length/10);
       },
       methods:{
         gradeMethods1(x){
@@ -89,6 +98,19 @@ export default{
             else{
                 return "/src/assets/icon/grabe_0.svg"
             }
+        },
+        clickActive(x){
+            this.category_product_active=x;
+        },
+        clickActiveLeft(){
+            if(this.category_product_active>1){
+                this.category_product_active--
+            }
+        },
+        clickActiveRight(){
+            if(this.category_product_active<this.category_product_length){
+                this.category_product_active++
+            }
         }
       }
   }
@@ -135,13 +157,13 @@ export default{
                         {{ tag }}
                     </div>
                 </div>
-                <div class="category_main_product_block" v-for="(product,index) in category_product" :key="index">
+                <div class="category_main_product_block" v-for="(product,index) in category_product_array" :key="index">
                     <div class="category_main_product_block-img">
                         <ChildComponent :dataProp="product.product_img" :dataPropId="product.product_id"></ChildComponent>
                     </div>
                     <div class="category_main_product_block-content">
                         <h2 class="category_main_product_block-content-title">
-                            {{ index+1 }}. 
+                            {{ index+1+this.category_product_ten}}. 
                             <router-link :to="{name:'Product',query:{category:product.product_id}}" class="category_main_product_block-content-title-text">
                                 {{ product.product_title }}
                             </router-link>
@@ -180,6 +202,20 @@ export default{
                                 {{ product.product_description }}
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="category_main_product_slider" v-if="category_product_array.length>1">
+                    <div class="category_main_product_slider-track">
+                        <img src="../assets/icon/caret_black.svg" alt="" @click="clickActiveLeft" class="category_main_product_slider-img category_main_product_slider-img-left" :class="[category_product_active==1?'category_main_product_slider-img-inactive':'category_main_product_slider-img-center']">
+                        <div class="category_main_product_slider_number" v-for="(item,index) in category_product_length" :key="index" >
+                            <span v-if="index==0" @click="clickActive(item)" :class="[category_product_active==item?'category_main_product_slider_active':'category_main_product_slider_inactive']">
+                                {{item}}
+                            </span>
+                        </div>
+                        <img src="../assets/icon/caret_black.svg" alt="" @click="clickActiveRight" class="category_main_product_slider-img category_main_product_slider-img-right" :class="[category_product_active==category_product_length?'category_main_product_slider-img-inactive':'category_main_product_slider-img-center']">
+                    </div>
+                    <div class="category_main_product_slider_count">
+                        {{ category_product_active }} из {{ category_product_length }}
                     </div>
                 </div>
             </div>
@@ -340,5 +376,56 @@ export default{
     grid-template-columns: 20px 1fr;
     grid-template-rows: 75px;
     overflow: hidden;
+}
+.category_main_product_slider{
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(128, 128, 128,0.3);
+}
+.category_main_product_slider-track{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.category_main_product_slider_number{
+    display: block;
+    margin: 0  10px;
+}
+.category_main_product_slider_active{
+    font-weight: 700;
+}
+.category_main_product_slider_inactive{
+    color: gray;
+    cursor: pointer;
+}
+.category_main_product_slider_inactive:hover{
+    color: black;
+}
+.category_main_product_slider_count{
+    display: grid;
+    justify-content: right;
+}
+.category_main_product_slider-img{
+    display: block;
+    width: 12px;
+    height: 12px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+.category_main_product_slider-img-inactive{
+    opacity: 0.2;
+    cursor: default;
+}
+.category_main_product_slider-img-center:hover{
+    opacity: 1;
+}
+.category_main_product_slider-img-left{
+    rotate: 90deg;
+    margin-right: 5px;
+}
+.category_main_product_slider-img-right{
+    rotate: 270deg;
+    margin-left: 5px;
 }
 </style>

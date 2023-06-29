@@ -87,7 +87,9 @@ export default{
             </span>
         </div>
         <button>Зарегистрироваться</button>
-        
+        <div style="margin-bottom: 35px;">
+            Уже есть на Relp? <router-link :to="{name:'SignIn'}">Авторизоваться</router-link>
+        </div>
     </form>    
 </div>
 
@@ -251,6 +253,6 @@ button{
     text-align: center;
     box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
     margin-top: 10px;
-    margin-bottom: 35px;
+    margin-bottom: 15px;
 }
 </style>

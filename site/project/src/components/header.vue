@@ -170,7 +170,7 @@ export default{
 
 <style scoped>
 .header{
-    z-index: 10;
+    z-index: 30;
     width: 100vw;
     top: 0;
     background: white;

@@ -25,7 +25,7 @@ export default{
 <template>
 
 <div class="field">
-    <h1>Вход{{rr}}</h1>
+    <h1>Вход</h1>
     <form>
         <div :class="inputFocus[0]===false ? 'input emailBefore focus': 'input emailBefore blur' ">
             <span class="title">Адрес эл. почты</span>
@@ -41,7 +41,9 @@ export default{
             </span>
         </div>
         <button>Войти</button>
-        <div></div>
+        <div style="margin-bottom: 35px;">
+            Новичок в Relp? <router-link :to="{name:'SignUp'}">Зарегистрироваться</router-link>
+        </div>
     </form>    
 </div>
 
@@ -131,6 +133,6 @@ button{
     text-align: center;
     box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
     margin-top: 15px;
-    margin-bottom: 35px;
+    margin-bottom: 15px;
 }
 </style>
