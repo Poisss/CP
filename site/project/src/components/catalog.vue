@@ -30,8 +30,7 @@ export default{
                                 {product_id:'18',product_title:'Много мяса',product_grade:'5',product_grade_count:'264',product_tag:['Кофе','Чай'],product_img:['/src/assets/img/img4.jpg','/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Воскресенье', opening: '10:00', closing: '12:00' },{ day: 'Понедельник', opening: '07:00', closing: '08:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: 'закрыто', closing: 'закрыто' },{ day: 'Четверг', opening: 'открыто', closing: 'открыто' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '08:00', closing: '09:00' },],product_description:'lorem fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef'},
                                 {product_id:'19',product_title:'Много мяса',product_grade:'5',product_grade_count:'264',product_tag:['Кофе','Чай'],product_img:['/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Воскресенье', opening: '10:00', closing: '12:00' },{ day: 'Понедельник', opening: '07:00', closing: '08:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: 'закрыто', closing: 'закрыто' },{ day: 'Четверг', opening: 'открыто', closing: 'открыто' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '08:00', closing: '09:00' },],product_description:'lorem fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef'},
                                 {product_id:'20',product_title:'Много мяса',product_grade:'5',product_grade_count:'264',product_tag:['Кофе','Чай'],product_img:['/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Воскресенье', opening: '10:00', closing: '12:00' },{ day: 'Понедельник', opening: '07:00', closing: '08:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: 'закрыто', closing: 'закрыто' },{ day: 'Четверг', opening: 'открыто', closing: 'открыто' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '08:00', closing: '09:00' },],product_description:'lorem fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef'},
-                                {product_id:'21',product_title:'Много мяса',product_grade:'5',product_grade_count:'264',product_tag:['Кофе','Чай'],product_img:['/src/assets/img/img4.jpg','/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Воскресенье', opening: '10:00', closing: '12:00' },{ day: 'Понедельник', opening: '07:00', closing: '08:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: 'закрыто', closing: 'закрыто' },{ day: 'Четверг', opening: 'открыто', closing: 'открыто' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '08:00', closing: '09:00' },],product_description:'lorem fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef'},
-                                
+                                {product_id:'21',product_title:'Много мяса',product_grade:'5',product_grade_count:'264',product_tag:['Кофе','Чай'],product_img:['/src/assets/img/img4.jpg','/src/assets/img/banner2.jpg','/src/assets/img/banner1.jpg'],openingTimes: [{ day: 'Воскресенье', opening: '10:00', closing: '12:00' },{ day: 'Понедельник', opening: '07:00', closing: '08:00' },{ day: 'Вторник', opening: '09:00', closing: '18:00' },{ day: 'Среда', opening: 'закрыто', closing: 'закрыто' },{ day: 'Четверг', opening: 'открыто', closing: 'открыто' },{ day: 'Пятница', opening: '09:00', closing: '18:00' },{ day: 'Суббота', opening: '08:00', closing: '09:00' },],product_description:'lorem fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef fefeife fefif eifeifiefieij eifiefieif eiefkeif eeef'},  
                             ],
                 category_product_array:[],
                 category_product_length:0,
@@ -114,27 +113,36 @@ export default{
             }
         },
         clickActive(x){
-            this.category_product_active=x;
-            this.category_product_ten=this.category_product_active*10-10;
-            this.category_product_array=this.category_product.slice(this.category_product_ten,this.category_product_ten+10);
-            if(this.category_product_length>9){
-                if(this.category_product_active<6){
-                    this.category_product_start=0;
-                    this.category_product_end=8;
+            if(this.category_product_active!=x){
+                this.category_product_active=x;
+                this.category_product_ten=this.category_product_active*10-10;
+                this.category_product_array=this.category_product.slice(this.category_product_ten,this.category_product_ten+10);
+                const element = document.getElementById('category_block');
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
                 }
-                else if(this.category_product_length-5<this.category_product_active){
-                    this.category_product_start=this.category_product_length-9;
-                    this.category_product_end=this.category_product_length-1;
-                }
-                else{
-                    this.category_product_start=this.category_product_active-5;
-                    this.category_product_end=this.category_product_active+3;
+                if(this.category_product_length>9){
+                    if(this.category_product_active<6){
+                        this.category_product_start=0;
+                        this.category_product_end=8;
+                    }
+                    else if(this.category_product_length-5<this.category_product_active){
+                        this.category_product_start=this.category_product_length-9;
+                        this.category_product_end=this.category_product_length-1;
+                    }
+                    else{
+                        this.category_product_start=this.category_product_active-5;
+                        this.category_product_end=this.category_product_active+3;
+                    }
                 }
             }
+            
         },
         clickActiveLeft(){
             if(this.category_product_active>1){
                 this.category_product_active--
+                this.category_product_ten=this.category_product_active*10-10;
+                this.category_product_array=this.category_product.slice(this.category_product_ten,this.category_product_ten+10);
                 if(this.category_product_length>9){
                 if(this.category_product_active<6){
                     this.category_product_start=0;
@@ -154,6 +162,8 @@ export default{
         clickActiveRight(){
             if(this.category_product_active<this.category_product_length){
                 this.category_product_active++
+                this.category_product_ten=this.category_product_active*10-10;
+                this.category_product_array=this.category_product.slice(this.category_product_ten,this.category_product_ten+10);
                 if(this.category_product_length>9){
                 if(this.category_product_active<6){
                     this.category_product_start=0;
@@ -176,6 +186,7 @@ export default{
 
 <template>
     <div class="field">
+        <div id="category_block"></div>
         <div class="category_main">
             <div class="category_main_filter">
                 <div class="category_main_filter_block">

@@ -13,18 +13,14 @@
             <div class="content">
                 <div>
                     <h3>О нас</h3>
-                    <p>jcyjdfybt rjv</p>
-                    <p>jcyjdfybt rjv</p>
+                    <router-link class="info" :to="{name:info}">О Relp</router-link>
+                    <router-link class="info" :to="{name:info}">Условия использования</router-link>
+                    <router-link class="info" :to="{name:info}">Политика конфиденциальности</router-link>
                 </div>
                 <div>
-                    <h3>О нас</h3>
-                    <p>jcyjdfybt rjv</p>
-                    <p>jcyjdfybt rjv</p>
-                </div>
-                <div>
-                    <h3>О нас</h3>
-                    <p>jcyjdfybt rjv</p>
-                    <p>jcyjdfybt rjv</p>
+                    <h3>Помощь</h3>
+                    <router-link class="info" :to="{name:info}">Частые вопросы</router-link>
+                    <router-link class="info" :to="{name:info}">техподдержка</router-link>
                 </div>
             </div>
             <hr>
@@ -39,13 +35,13 @@
 hr{
     width: 100%;
     height: 2px;
-    background: rgb(0, 128, 107);
+    background: gray;
     border: none;
     border-radius: 3px;
 }
 .header{
     width: 100vw;
-    background: rgb(127, 255, 212);
+    background: rgb(247,247,247);
     padding: 60px 0 ;
 }
 .field{
@@ -91,8 +87,16 @@ hr{
 }
 .content{
     display: grid;
-    grid-template-columns: 200px 200px 200px auto;
+    grid-template-columns: 300px 300px 200px auto;
 
+}
+.info{
+    display: block;
+    color: gray;
+    font-weight: 400;
+}
+.info:hover{
+    text-decoration-line: underline;
 }
 .copy{
     font-size: 0.75em;
