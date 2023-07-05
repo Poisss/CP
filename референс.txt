@@ -3,3 +3,5 @@
 
 loding
 https://ru.vuejs.org/v2/cookbook/using-axios-to-consume-apis.html
+
+сделать поля с номером телефона и офицальной веб страницки или сетей
