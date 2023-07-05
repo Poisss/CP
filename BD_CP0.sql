@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Время создания: Июл 05 2023 г., 23:46
+-- Время создания: Июн 30 2023 г., 13:28
 -- Версия сервера: 8.0.30
--- Версия PHP: 7.2.34
+-- Версия PHP: 8.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,62 +34,9 @@ CREATE TABLE `product` (
   `product_description` text NOT NULL,
   `product_logo` varchar(255) NOT NULL,
   `street` varchar(255) NOT NULL,
-  `gpsx` double NOT NULL,
-  `gpsy` double NOT NULL
+  `gpsx` point NOT NULL,
+  `gpsy` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `product`
---
-
-INSERT INTO `product` (`product_id`, `product_title`, `authorid`, `product_description`, `product_logo`, `street`, `gpsx`, `gpsy`) VALUES
-(2, 'Много мяса', 1, 'Я увидел огромную толпу людей возле магазина и понял, что попробовать стоит. Оказалось, что бутерброд на завтрак был самым популярным блюдом, но я выбрал батон с фисташками Эрл Грей, так как я уже ел в тот день. Это было потрясающе. Я люблю Эрл Грей и фисташковый по отдельности, и никогда не пробовала их вместе. Я не знаю, почему другие пекарни еще не попробовали эту комбинацию. Буханка была не слишком сладкой, что делало ее хорошим угощением в полдень, но не слишком тяжелым. ', '/src/assets/img/logo_relp.svg', 'Грязнова, 36', 53.397227, 58.98416),
-(3, 'Компания по выпечке', 2, 'Бутерброды на завтрак здесь такие вкусные! Вы должны получить специальный с беконом и авокадо, потому что он действительно добавляет сэндвичу сливочный, соленый и хрустящий вкус. Бутерброды довольно массивные, и моя любимая часть - печенье! Он маслянистый и слоеный и так хорошо сочетается с начинкой! Это простой бутерброд, который по-прежнему вкусен и попадает в точку!', '', 'Грязнова, 36', 53.397227, 58.98416);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `productimg`
---
-
-CREATE TABLE `productimg` (
-  `id` int NOT NULL,
-  `path` varchar(255) NOT NULL,
-  `product_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `productimg`
---
-
-INSERT INTO `productimg` (`id`, `path`, `product_id`) VALUES
-(1, '/src/assets/img/img4.jpg', 2),
-(2, '/src/assets/img/banner1.jpg', 2),
-(3, '/src/assets/img/banner2.jpg', 3);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `productimgmenu`
---
-
-CREATE TABLE `productimgmenu` (
-  `id` int NOT NULL,
-  `path` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `product_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `productimgmenu`
---
-
-INSERT INTO `productimgmenu` (`id`, `path`, `name`, `price`, `product_id`) VALUES
-(1, '/src/assets/img/menu1.jpg', 'Блюдо 1', '300.00', 2),
-(2, '/src/assets/img/menu1.jpg', 'Блюдо 2', '400.00', 2),
-(3, '/src/assets/img/menu.jpg', 'Блюдо 3', '250.00', 3),
-(4, '/src/assets/img/menu.jpg', 'Блюдо 4', '150.00', 3);
 
 -- --------------------------------------------------------
 
@@ -101,14 +48,6 @@ CREATE TABLE `producttag` (
   `productid` int NOT NULL,
   `tagid` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `producttag`
---
-
-INSERT INTO `producttag` (`productid`, `tagid`) VALUES
-(2, 1),
-(3, 3);
 
 -- --------------------------------------------------------
 
@@ -221,29 +160,13 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_name_last`, `user_password`, 
 -- Индексы таблицы `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_id`),
-  ADD KEY `authorid` (`authorid`);
-
---
--- Индексы таблицы `productimg`
---
-ALTER TABLE `productimg`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`);
-
---
--- Индексы таблицы `productimgmenu`
---
-ALTER TABLE `productimgmenu`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD PRIMARY KEY (`product_id`);
 
 --
 -- Индексы таблицы `producttag`
 --
 ALTER TABLE `producttag`
-  ADD KEY `tagid` (`tagid`),
-  ADD KEY `productid` (`productid`);
+  ADD KEY `tagid` (`tagid`);
 
 --
 -- Индексы таблицы `role`
@@ -285,19 +208,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT для таблицы `productimg`
---
-ALTER TABLE `productimg`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT для таблицы `productimgmenu`
---
-ALTER TABLE `productimgmenu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `product_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `sex`
@@ -322,29 +233,10 @@ ALTER TABLE `users`
 --
 
 --
--- Ограничения внешнего ключа таблицы `product`
---
-ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`authorid`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Ограничения внешнего ключа таблицы `productimg`
---
-ALTER TABLE `productimg`
-  ADD CONSTRAINT `productimg_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Ограничения внешнего ключа таблицы `productimgmenu`
---
-ALTER TABLE `productimgmenu`
-  ADD CONSTRAINT `productimgmenu_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
 -- Ограничения внешнего ключа таблицы `producttag`
 --
 ALTER TABLE `producttag`
-  ADD CONSTRAINT `producttag_ibfk_1` FOREIGN KEY (`tagid`) REFERENCES `tag` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `producttag_ibfk_2` FOREIGN KEY (`productid`) REFERENCES `product` (`product_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `producttag_ibfk_1` FOREIGN KEY (`tagid`) REFERENCES `tag` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Ограничения внешнего ключа таблицы `userrole`
