@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Время создания: Июл 05 2023 г., 23:46
+-- Время создания: Июл 06 2023 г., 10:40
 -- Версия сервера: 8.0.30
--- Версия PHP: 7.2.34
+-- Версия PHP: 8.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,72 +24,187 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `dayweek`
+--
+
+CREATE TABLE `dayweek` (
+  `id` int NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `dayweek`
+--
+
+INSERT INTO `dayweek` (`id`, `name`) VALUES
+(1, 'Понедельник'),
+(2, 'Вторник'),
+(3, 'Среда'),
+(4, 'Четверг'),
+(5, 'Пятница'),
+(6, 'Суббота'),
+(7, 'Воскресенье');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `grade`
+--
+
+CREATE TABLE `grade` (
+  `id` int NOT NULL,
+  `number` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `grade`
+--
+
+INSERT INTO `grade` (`id`, `number`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `img`
+--
+
+CREATE TABLE `img` (
+  `id` int NOT NULL,
+  `path` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `img`
+--
+
+INSERT INTO `img` (`id`, `path`) VALUES
+(1, '/src/assets/img/img4.jpg'),
+(2, '/src/assets/img/banner1.jpg'),
+(3, '/src/assets/img/banner2.jpg'),
+(4, '/src/assets/img/logo_relp.svg'),
+(5, '/src/assets/img/menu1.jpg'),
+(6, '/src/assets/img/menu.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `listimg`
+--
+
+CREATE TABLE `listimg` (
+  `id` int NOT NULL,
+  `img_id` int NOT NULL,
+  `product_menu_id` int DEFAULT NULL,
+  `review_id` int DEFAULT NULL,
+  `product_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `listimg`
+--
+
+INSERT INTO `listimg` (`id`, `img_id`, `product_menu_id`, `review_id`, `product_id`) VALUES
+(4, 6, 1, NULL, NULL),
+(5, 5, 2, NULL, NULL),
+(6, 5, 3, NULL, NULL),
+(7, 6, 4, NULL, NULL),
+(8, 2, NULL, NULL, 3),
+(9, 3, NULL, NULL, 3),
+(10, 2, NULL, NULL, 2),
+(11, 3, NULL, NULL, 2),
+(12, 5, NULL, 1, NULL),
+(13, 6, NULL, 1, NULL),
+(14, 5, NULL, 2, NULL),
+(15, 6, NULL, 2, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `opentime`
+--
+
+CREATE TABLE `opentime` (
+  `id` int NOT NULL,
+  `dayweek_id` int NOT NULL,
+  `time_open` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `time_close` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `product_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `opentime`
+--
+
+INSERT INTO `opentime` (`id`, `dayweek_id`, `time_open`, `time_close`, `product_id`) VALUES
+(1, 1, '08:30', '12:30', 2),
+(2, 2, '10:30', '18:30', 2),
+(3, 3, '08:30', '18:30', 2),
+(4, 4, '18:30', '22:30', 2),
+(5, 5, '11:30', '16:30', 2),
+(6, 6, '15:30', '19:30', 2),
+(7, 7, '13:30', '17:30', 2),
+(8, 1, '06:30', '18:00', 3),
+(9, 2, '03:30', '22:30', 3),
+(10, 3, '16:30', '18:00', 3),
+(11, 4, '13:30', '22:00', 3),
+(12, 5, '16:30', '20:00', 3),
+(13, 6, '19:00', '20:30', 3),
+(14, 7, '15:30', '20:45', 3);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `product`
 --
 
 CREATE TABLE `product` (
-  `product_id` int NOT NULL,
-  `product_title` varchar(255) NOT NULL,
-  `authorid` int NOT NULL,
-  `product_description` text NOT NULL,
-  `product_logo` varchar(255) NOT NULL,
+  `id` int NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `author_id` int NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `street` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `website` varchar(255) NOT NULL,
   `gpsx` double NOT NULL,
-  `gpsy` double NOT NULL
+  `gpsy` double NOT NULL,
+  `logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `product`
 --
 
-INSERT INTO `product` (`product_id`, `product_title`, `authorid`, `product_description`, `product_logo`, `street`, `gpsx`, `gpsy`) VALUES
-(2, 'Много мяса', 1, 'Я увидел огромную толпу людей возле магазина и понял, что попробовать стоит. Оказалось, что бутерброд на завтрак был самым популярным блюдом, но я выбрал батон с фисташками Эрл Грей, так как я уже ел в тот день. Это было потрясающе. Я люблю Эрл Грей и фисташковый по отдельности, и никогда не пробовала их вместе. Я не знаю, почему другие пекарни еще не попробовали эту комбинацию. Буханка была не слишком сладкой, что делало ее хорошим угощением в полдень, но не слишком тяжелым. ', '/src/assets/img/logo_relp.svg', 'Грязнова, 36', 53.397227, 58.98416),
-(3, 'Компания по выпечке', 2, 'Бутерброды на завтрак здесь такие вкусные! Вы должны получить специальный с беконом и авокадо, потому что он действительно добавляет сэндвичу сливочный, соленый и хрустящий вкус. Бутерброды довольно массивные, и моя любимая часть - печенье! Он маслянистый и слоеный и так хорошо сочетается с начинкой! Это простой бутерброд, который по-прежнему вкусен и попадает в точку!', '', 'Грязнова, 36', 53.397227, 58.98416);
+INSERT INTO `product` (`id`, `title`, `author_id`, `description`, `street`, `phone`, `website`, `gpsx`, `gpsy`, `logo`) VALUES
+(2, 'Много мяса', 1, 'Я увидел огромную толпу людей возле магазина и понял, что попробовать стоит. Оказалось, что бутерброд на завтрак был самым популярным блюдом, но я выбрал батон с фисташками Эрл Грей, так как я уже ел в тот день. Это было потрясающе. Я люблю Эрл Грей и фисташковый по отдельности, и никогда не пробовала их вместе. Я не знаю, почему другие пекарни еще не попробовали эту комбинацию. Буханка была не слишком сладкой, что делало ее хорошим угощением в полдень, но не слишком тяжелым. ', 'Грязнова, 36', '+7-912-318-69-63', 'https://newlms.magtu.ru/', 53.397227, 58.98416, ''),
+(3, 'Компания по выпечке', 2, 'Бутерброды на завтрак здесь такие вкусные! Вы должны получить специальный с беконом и авокадо, потому что он действительно добавляет сэндвичу сливочный, соленый и хрустящий вкус. Бутерброды довольно массивные, и моя любимая часть - печенье! Он маслянистый и слоеный и так хорошо сочетается с начинкой! Это простой бутерброд, который по-прежнему вкусен и попадает в точку!', 'Грязнова, 36', '+7-912-318-69-63', 'https://newlms.magtu.ru/', 53.397227, 58.98416, '/src/assets/img/logo_relp.svg');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `productimg`
+-- Структура таблицы `productmenu`
 --
 
-CREATE TABLE `productimg` (
+CREATE TABLE `productmenu` (
   `id` int NOT NULL,
-  `path` varchar(255) NOT NULL,
-  `product_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `productimg`
---
-
-INSERT INTO `productimg` (`id`, `path`, `product_id`) VALUES
-(1, '/src/assets/img/img4.jpg', 2),
-(2, '/src/assets/img/banner1.jpg', 2),
-(3, '/src/assets/img/banner2.jpg', 3);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `productimgmenu`
---
-
-CREATE TABLE `productimgmenu` (
-  `id` int NOT NULL,
-  `path` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `product_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Дамп данных таблицы `productimgmenu`
+-- Дамп данных таблицы `productmenu`
 --
 
-INSERT INTO `productimgmenu` (`id`, `path`, `name`, `price`, `product_id`) VALUES
-(1, '/src/assets/img/menu1.jpg', 'Блюдо 1', '300.00', 2),
-(2, '/src/assets/img/menu1.jpg', 'Блюдо 2', '400.00', 2),
-(3, '/src/assets/img/menu.jpg', 'Блюдо 3', '250.00', 3),
-(4, '/src/assets/img/menu.jpg', 'Блюдо 4', '150.00', 3);
+INSERT INTO `productmenu` (`id`, `name`, `price`, `product_id`) VALUES
+(1, 'Блюдо 1', '300.00', 2),
+(2, 'Блюдо 2', '400.00', 2),
+(3, 'Блюдо 3', '250.00', 3),
+(4, 'Блюдо 4', '150.00', 3);
 
 -- --------------------------------------------------------
 
@@ -98,17 +213,40 @@ INSERT INTO `productimgmenu` (`id`, `path`, `name`, `price`, `product_id`) VALUE
 --
 
 CREATE TABLE `producttag` (
-  `productid` int NOT NULL,
-  `tagid` int NOT NULL
+  `product_id` int NOT NULL,
+  `tag_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `producttag`
 --
 
-INSERT INTO `producttag` (`productid`, `tagid`) VALUES
+INSERT INTO `producttag` (`product_id`, `tag_id`) VALUES
 (2, 1),
 (3, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `review`
+--
+
+CREATE TABLE `review` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `grade_id` int NOT NULL,
+  `text` text NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `review`
+--
+
+INSERT INTO `review` (`id`, `user_id`, `product_id`, `grade_id`, `text`, `date`) VALUES
+(1, 1, 2, 3, 'Было ок', '2023-07-06 10:06:05'),
+(2, 2, 3, 4, 'Было супер ок', '2023-07-06 10:06:05');
 
 -- --------------------------------------------------------
 
@@ -176,15 +314,15 @@ INSERT INTO `tag` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `userrole` (
-  `userid` int NOT NULL,
-  `roleid` varchar(255) NOT NULL
+  `user_id` int NOT NULL,
+  `role_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `userrole`
 --
 
-INSERT INTO `userrole` (`userid`, `roleid`) VALUES
+INSERT INTO `userrole` (`user_id`, `role_id`) VALUES
 (1, 'Администратор'),
 (2, 'Пользователь');
 
@@ -195,21 +333,21 @@ INSERT INTO `userrole` (`userid`, `roleid`) VALUES
 --
 
 CREATE TABLE `users` (
-  `user_id` int NOT NULL,
-  `user_name` varchar(50) NOT NULL,
-  `user_name_last` varchar(50) NOT NULL,
-  `user_password` char(32) NOT NULL,
-  `user_sex` int NOT NULL,
-  `user_img` varchar(255) NOT NULL,
-  `user_birthdate` date NOT NULL,
-  `user_email` varchar(255) NOT NULL
+  `id` int NOT NULL,
+  `name_first` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `name_last` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `password` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `sex` int NOT NULL,
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `birthdate` date NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_name`, `user_name_last`, `user_password`, `user_sex`, `user_img`, `user_birthdate`, `user_email`) VALUES
+INSERT INTO `users` (`id`, `name_first`, `name_last`, `password`, `sex`, `img`, `birthdate`, `email`) VALUES
 (1, 'Артём', 'Аверин', '123', 1, '/src/assets/img/img2.jpg', '2003-01-18', 'artem@mail.ru'),
 (2, 'Сергей', 'Пинпун', '123', 2, '/src/assets/img/img2.jpg', '2004-04-08', 'sergey@gmail.com');
 
@@ -218,23 +356,52 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_name_last`, `user_password`, 
 --
 
 --
--- Индексы таблицы `product`
+-- Индексы таблицы `dayweek`
 --
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_id`),
-  ADD KEY `authorid` (`authorid`);
+ALTER TABLE `dayweek`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `productimg`
+-- Индексы таблицы `grade`
 --
-ALTER TABLE `productimg`
+ALTER TABLE `grade`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `img`
+--
+ALTER TABLE `img`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `listimg`
+--
+ALTER TABLE `listimg`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `img_id` (`img_id`),
+  ADD KEY `product_menu_id` (`product_menu_id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `review_id` (`review_id`);
+
+--
+-- Индексы таблицы `opentime`
+--
+ALTER TABLE `opentime`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `dayweek_id` (`dayweek_id`),
   ADD KEY `product_id` (`product_id`);
 
 --
--- Индексы таблицы `productimgmenu`
+-- Индексы таблицы `product`
 --
-ALTER TABLE `productimgmenu`
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `authorid` (`author_id`);
+
+--
+-- Индексы таблицы `productmenu`
+--
+ALTER TABLE `productmenu`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_id` (`product_id`);
 
@@ -242,8 +409,17 @@ ALTER TABLE `productimgmenu`
 -- Индексы таблицы `producttag`
 --
 ALTER TABLE `producttag`
-  ADD KEY `tagid` (`tagid`),
-  ADD KEY `productid` (`productid`);
+  ADD KEY `tagid` (`tag_id`),
+  ADD KEY `productid` (`product_id`);
+
+--
+-- Индексы таблицы `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `grade_id` (`grade_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Индексы таблицы `role`
@@ -267,37 +443,67 @@ ALTER TABLE `tag`
 -- Индексы таблицы `userrole`
 --
 ALTER TABLE `userrole`
-  ADD KEY `roleid` (`roleid`),
-  ADD KEY `userid` (`userid`);
+  ADD KEY `roleid` (`role_id`),
+  ADD KEY `userid` (`user_id`);
 
 --
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD KEY `user_sex` (`user_sex`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_sex` (`sex`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
+-- AUTO_INCREMENT для таблицы `dayweek`
+--
+ALTER TABLE `dayweek`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT для таблицы `grade`
+--
+ALTER TABLE `grade`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT для таблицы `img`
+--
+ALTER TABLE `img`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT для таблицы `listimg`
+--
+ALTER TABLE `listimg`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT для таблицы `opentime`
+--
+ALTER TABLE `opentime`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT для таблицы `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT для таблицы `productimg`
---
-ALTER TABLE `productimg`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT для таблицы `productimgmenu`
+-- AUTO_INCREMENT для таблицы `productmenu`
 --
-ALTER TABLE `productimgmenu`
+ALTER TABLE `productmenu`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT для таблицы `review`
+--
+ALTER TABLE `review`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `sex`
@@ -315,49 +521,67 @@ ALTER TABLE `tag`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
 
 --
+-- Ограничения внешнего ключа таблицы `listimg`
+--
+ALTER TABLE `listimg`
+  ADD CONSTRAINT `listimg_ibfk_2` FOREIGN KEY (`img_id`) REFERENCES `img` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `listimg_ibfk_3` FOREIGN KEY (`product_menu_id`) REFERENCES `productmenu` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `listimg_ibfk_4` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `listimg_ibfk_5` FOREIGN KEY (`review_id`) REFERENCES `review` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Ограничения внешнего ключа таблицы `opentime`
+--
+ALTER TABLE `opentime`
+  ADD CONSTRAINT `opentime_ibfk_1` FOREIGN KEY (`dayweek_id`) REFERENCES `dayweek` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `opentime_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
 -- Ограничения внешнего ключа таблицы `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`authorid`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Ограничения внешнего ключа таблицы `productimg`
+-- Ограничения внешнего ключа таблицы `productmenu`
 --
-ALTER TABLE `productimg`
-  ADD CONSTRAINT `productimg_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Ограничения внешнего ключа таблицы `productimgmenu`
---
-ALTER TABLE `productimgmenu`
-  ADD CONSTRAINT `productimgmenu_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `productmenu`
+  ADD CONSTRAINT `productmenu_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Ограничения внешнего ключа таблицы `producttag`
 --
 ALTER TABLE `producttag`
-  ADD CONSTRAINT `producttag_ibfk_1` FOREIGN KEY (`tagid`) REFERENCES `tag` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `producttag_ibfk_2` FOREIGN KEY (`productid`) REFERENCES `product` (`product_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `producttag_ibfk_1` FOREIGN KEY (`tag_id`) REFERENCES `tag` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `producttag_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Ограничения внешнего ключа таблицы `review`
+--
+ALTER TABLE `review`
+  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`grade_id`) REFERENCES `grade` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `review_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Ограничения внешнего ключа таблицы `userrole`
 --
 ALTER TABLE `userrole`
-  ADD CONSTRAINT `userrole_ibfk_1` FOREIGN KEY (`roleid`) REFERENCES `role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `userrole_ibfk_2` FOREIGN KEY (`userid`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `userrole_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `userrole_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Ограничения внешнего ключа таблицы `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_sex`) REFERENCES `sex` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`sex`) REFERENCES `sex` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
