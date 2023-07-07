@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Время создания: Июл 07 2023 г., 23:37
+-- Время создания: Июл 06 2023 г., 10:40
 -- Версия сервера: 8.0.30
--- Версия PHP: 7.2.34
+-- Версия PHP: 8.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -180,37 +180,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `title`, `author_id`, `description`, `street`, `phone`, `website`, `gpsx`, `gpsy`, `logo`) VALUES
-(2, 'Много мяса', 1, 'Я увидел огромную толпу людей возле магазина и понял, что попробовать стоит. Оказалось, что бутерброд на завтрак был самым популярным блюдом, но я выбрал батон с фисташками Эрл Грей, так как я уже ел в тот день. Это было потрясающе. Я люблю Эрл Грей и фисташковый по отдельности, и никогда не пробовала их вместе. Я не знаю, почему другие пекарни еще не попробовали эту комбинацию. Буханка была не слишком сладкой, что делало ее хорошим угощением в полдень, но не слишком тяжелым. ', 'Грязнова, 36', '+7-912-318-69-63', 'https://newlms.magtu.ru/', 53.397227, 58.98416, '/src/assets/img/img1.jpg'),
-(3, 'Компания по выпечке', 2, 'Бутерброды на завтрак здесь такие вкусные! Вы должны получить специальный с беконом и авокадо, потому что он действительно добавляет сэндвичу сливочный, соленый и хрустящий вкус. Бутерброды довольно массивные, и моя любимая часть - печенье! Он маслянистый и слоеный и так хорошо сочетается с начинкой! Это простой бутерброд, который по-прежнему вкусен и попадает в точку!', 'Грязнова, 36', '+7-912-318-69-63', 'https://newlms.magtu.ru/', 53.397227, 58.98416, '/src/assets/img/img1.jpg');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `productgrade`
---
-
-CREATE TABLE `productgrade` (
-  `id` int NOT NULL,
-  `grade_id` int NOT NULL,
-  `count` int NOT NULL,
-  `product_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `productgrade`
---
-
-INSERT INTO `productgrade` (`id`, `grade_id`, `count`, `product_id`) VALUES
-(1, 1, 12, 2),
-(2, 2, 3, 2),
-(3, 3, 24, 2),
-(4, 4, 76, 2),
-(5, 5, 45, 2),
-(6, 1, 13, 3),
-(7, 2, 12, 3),
-(8, 3, 35, 3),
-(9, 4, 63, 3),
-(10, 5, 23, 3);
+(2, 'Много мяса', 1, 'Я увидел огромную толпу людей возле магазина и понял, что попробовать стоит. Оказалось, что бутерброд на завтрак был самым популярным блюдом, но я выбрал батон с фисташками Эрл Грей, так как я уже ел в тот день. Это было потрясающе. Я люблю Эрл Грей и фисташковый по отдельности, и никогда не пробовала их вместе. Я не знаю, почему другие пекарни еще не попробовали эту комбинацию. Буханка была не слишком сладкой, что делало ее хорошим угощением в полдень, но не слишком тяжелым. ', 'Грязнова, 36', '+7-912-318-69-63', 'https://newlms.magtu.ru/', 53.397227, 58.98416, ''),
+(3, 'Компания по выпечке', 2, 'Бутерброды на завтрак здесь такие вкусные! Вы должны получить специальный с беконом и авокадо, потому что он действительно добавляет сэндвичу сливочный, соленый и хрустящий вкус. Бутерброды довольно массивные, и моя любимая часть - печенье! Он маслянистый и слоеный и так хорошо сочетается с начинкой! Это простой бутерброд, который по-прежнему вкусен и попадает в точку!', 'Грязнова, 36', '+7-912-318-69-63', 'https://newlms.magtu.ru/', 53.397227, 58.98416, '/src/assets/img/logo_relp.svg');
 
 -- --------------------------------------------------------
 
@@ -353,8 +324,7 @@ CREATE TABLE `userrole` (
 
 INSERT INTO `userrole` (`user_id`, `role_id`) VALUES
 (1, 'Администратор'),
-(2, 'Пользователь'),
-(1, 'Редактор');
+(2, 'Пользователь');
 
 -- --------------------------------------------------------
 
@@ -427,14 +397,6 @@ ALTER TABLE `opentime`
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
   ADD KEY `authorid` (`author_id`);
-
---
--- Индексы таблицы `productgrade`
---
-ALTER TABLE `productgrade`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `grade_id` (`grade_id`),
-  ADD KEY `product_id` (`product_id`);
 
 --
 -- Индексы таблицы `productmenu`
@@ -532,12 +494,6 @@ ALTER TABLE `product`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT для таблицы `productgrade`
---
-ALTER TABLE `productgrade`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
 -- AUTO_INCREMENT для таблицы `productmenu`
 --
 ALTER TABLE `productmenu`
@@ -592,13 +548,6 @@ ALTER TABLE `opentime`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Ограничения внешнего ключа таблицы `productgrade`
---
-ALTER TABLE `productgrade`
-  ADD CONSTRAINT `productgrade_ibfk_1` FOREIGN KEY (`grade_id`) REFERENCES `grade` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `productgrade_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Ограничения внешнего ключа таблицы `productmenu`
