@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 export default{
     data() {
         return {
@@ -20,43 +21,24 @@ export default{
                                 {title:'Отели',img:'/src/assets/icon/bed.svg'},{title:'Еда',img:'/src/assets/icon/eat.svg'},
                                 {title:'Услуги',img:''},{title:'Мероприятии',img:''},
                                 {title:'Государственные услуги',img:'/src/assets/icon/public.svg'},{title:'Медицина',img:'/src/assets/icon/hospital.svg'},],
-            activity_card:[{user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'3',product_id:'c00',product_title:'Мак',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'3',product_id:'c00',product_title:'Мак',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'3',product_id:'c00',product_title:'Мак',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'3',product_id:'c00',product_title:'Мак',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
-                            {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'3',product_id:'c00',product_title:'Мак',product_img:'/src/assets/img/img1.jpg'},],
+            activity_card:[],
             first_activity_card:[]                                                                
         }
     },
     mounted(){
+        axios.get('http://cp/site/project/php/mainReview.php')
+        .then(response => { 
+            this.activity_card = response.data;
+            this.first_activity_card=this.activity_card.slice(0,this.activity_card_click)
+        })
+        .catch(error => { console.log(error) })
         if(this.slider_index==0){
             this.sliderHeight[0]=90;  
             this.sliderHeight[1]=0;
             this.sliderHeight[2]=0;
             this.sliderHeight[3]=0;
         }    
-        this.sliderMountedInterval();
-        this.first_activity_card=this.activity_card.slice(0,this.activity_card_click)
+        this.sliderMountedInterval();   
     },
     beforeDestroy() {
         clearInterval(this.sliderInterval);

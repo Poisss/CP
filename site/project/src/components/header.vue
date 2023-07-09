@@ -1,7 +1,26 @@
 <script>
+import { useStore } from '../store/store';
 export default{
+    setup(){
+        const Store = useStore()
+        const logout = () => {
+            Store.success = false;
+            Store.role = '';
+            Store.name = '';
+            Store.name_last = '';
+            Store.img='';
+            Store.id = '';
+            router.push({ name: 'home' })
+        }
+
+        return{
+            Store,
+            logout
+        }
+    },
     data() {
         return {
+            menu_focus:false,
             btn_searc_focus:[false,false],
             location: "Магнитогорск",
             search:"",
@@ -36,6 +55,9 @@ export default{
       }
     },
     methods:{
+        menu_click(){
+            this.menu_focus=!this.menu_focus;
+        },
         search_router(){
             switch (this.$route.name) {
             case 'Catalog': return this.search=this.$route.query.find_desc;    
@@ -43,7 +65,8 @@ export default{
             default: return this.search='';
             }
         },
-        search_enter(){
+        search_enter(x){
+            this.btn_searc_focus[x]=false;
             this.$router.push({name:'Catalog',query:{find_desc:this.search,find_loc:this.location}});
         },
         search_click(x){
@@ -94,10 +117,10 @@ export default{
         <div class="nav" :style="{display:componentNumber==3?'none':''}">
             <div class="nav-grid">
                 <div class="btn-search btn-search-one nav-block">
-                    <input type="text" v-model="search" @keyup.enter="search_enter(),add_history(search)" class="nav-block-one" placeholder="Ресторан, отель, коцерт" @focus="btn_searc_focus[0]=true" @blur="btn_searc_focus[0]=false">
+                    <input type="text" v-model="search" @keyup.enter="search_enter(0),add_history(search)" class="nav-block-one" placeholder="Ресторан, отель, коцерт" @focus="btn_searc_focus[0]=true" @blur="btn_searc_focus[0]=false">
                 </div>
                 <div class="btn-search btn-search-two nav-block">
-                    <input type="text" v-model="location" @keyup.enter="search_enter(),add_history(search)" class="nav-block-two" placeholder="Магнитогорск" @focus="btn_searc_focus[1]=true" @blur="btn_searc_focus[1]=false">
+                    <input type="text" v-model="location" @keyup.enter="search_enter(1),add_history(search)" class="nav-block-two" placeholder="Магнитогорск" @focus="btn_searc_focus[1]=true" @blur="btn_searc_focus[1]=false">
                 </div>
             </div>
             
@@ -151,7 +174,7 @@ export default{
                 </div>
             </div>
         </div>
-        <div class="login" :style="{display:componentNumber==3?'none':''}">
+        <div v-if="!Store.success" class="login" :style="{display:componentNumber==3?'none':''}">
             <router-link :to="{
                 name:'SignUp',
                 params:id=1
@@ -164,6 +187,34 @@ export default{
                 }" class="sign signin">
                 Войти
             </router-link>
+        </div>
+        <div v-if="Store.success" class="login">
+            <div>
+                
+            </div>
+            <div class="activity-block-header-text">
+                {{ Store.name }} {{ Store.name_last.slice(0, 1) }}.
+            </div>
+            <div class="activity-block-header-img-border">
+                <div  class="activity-block-header-img" @click="menu_click" @blur="menu_click">
+                    <img :src="Store.img" alt="">
+                </div>
+                <div v-if="menu_focus" class="activity-block-header-img-block">
+                    <router-link :to="{name:'profile'}" @click="menu_click" class="activity-block-header-img-block-li">
+                        Личные данные
+                    </router-link>
+                    <router-link :to="{name:'control'}" @click="menu_click" class="activity-block-header-img-block-li">
+                        Управление
+                    </router-link>
+                    <div @click="logout" class="activity-block-header-img-block-li">
+                        Выход
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+
+            </div>
         </div>
     </div>
 </template>
@@ -323,10 +374,52 @@ input:focus,input:active {
 }
 .login{
     display: grid;
-    grid-template-columns: 1fr 100px 100px 50px;
+    grid-template-columns: 1fr 140px 60px 50px;
     grid-template-areas: ". signup signin .";
     justify-items: center;
     align-items: center;
+}
+.activity-block-header-text{
+    display: grid;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+    justify-self: end;
+}
+.activity-block-header-img-border{
+    position: relative;
+}
+.activity-block-header-img{
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.activity-block-header-img img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.activity-block-header-img-block{
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr;
+    top: 43px;
+    right: 0px;
+    width: 150px;
+    background-color: white;
+    border: 1px solid rgb(0, 0, 0,0.4);
+    border-radius: 2px;
+}
+.activity-block-header-img-block-li{
+    cursor: pointer;
+    padding: 5px;
+    color: black;
+    font-weight: 400;
+}
+.activity-block-header-img-block-li:hover{
+    background: rgb(128, 128, 128,0.2);
 }
 .sign{
     

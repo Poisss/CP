@@ -1,4 +1,7 @@
 <script>
+import axios from 'axios';
+import router from '../router.js';
+import { useStore } from '../store/store';
 export default{
       
     data() {
@@ -18,10 +21,87 @@ export default{
             sex:"",
             passwordType:"password",
             passwordClass:"input_password_span eye",
-            inputFocus:[false,false,false,false,false,false,false]
+            inputFocus:[false,false,false,false,false,false,false],
+            errorFirstName:false,
+            errorLastName:false,
+            errorEmail:false,
+            errorPassword:false,
+            errorDate:false,
+            errorSex:false
+        }
+    },
+    mounted() {
+        const Store = useStore();
+
+        if (Store.success) {
+        router.push({ name: 'home' });
         }
     },
     methods:{
+        signUp() {
+            if(this.firstName.trim()==''){
+                this.errorFirstName=true
+            }
+            if(this.lastName.trim()==''){
+                this.errorLastName=true
+            }
+            if(this.email.trim()==''){
+                this.errorEmail=true
+            }
+            if(this.password.trim()==''){
+                this.errorPassword=true
+            }
+            if(this.day==''){
+                this.errorDate=true
+            }
+            if(this.month==''){
+                this.errorDate=true
+            }
+            if(this.year==''){
+                this.errorDate=true
+            }
+            if(this.sex==''){
+                this.errorSex=true
+            }
+            if(this.firstName.trim()!='' && this.lastName.trim()!='' && this.email.trim()!='' 
+            && this.password.trim()!='' && this.day!='' && this.month!='' 
+            && this.year!='' && this.sex!=''){
+                const userData = {
+                    name: this.firstName,
+                    name_last: this.lastName,
+                    email: this.email,
+                    password: this.password,
+                    date: this.year+'-'+this.month+'-'+this.day,
+                    sex: this.sex
+                };
+                axios.post('http://cp/site/project/php/register.php', userData, {
+                timeout: 50000,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+                })
+                .then(response => {
+                    console.log(response.data);
+                    if (response.data.success) {
+                        const Store = useStore()
+                        Store.setRole(response.data.role)
+                        Store.setName(response.data.name)
+                        Store.setSuccess(response.data.success)
+                        Store.setNamelast(response.data.name_last)
+                        Store.setId(response.data.id)
+                        Store.setImg(response.data.img)
+                        router.push({name: 'home' })
+                    }
+                    else{
+                        console.log('Ошибка во время авторизации')
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+            } 
+        },
         switchPassword(){
             this.passwordType=this.passwordType==="password" ? "text" : "password"
             this.passwordClass=this.passwordType==="password" ? "input_password_span eye" : "input_password_span eye-slash"
@@ -33,21 +113,21 @@ export default{
 <template>
     
 <div class="field">
-    <h1>Регистрация{{rr}}</h1>
-    <form>
+    <h1>Регистрация</h1>
+    <form @click.prevent>
         <div :class="inputFocus[0]===false ? 'input focus': 'input blur' ">
-            <span class="title">Имя</span>
+            <span class="title">Имя<span v-if="this.errorFirstName" class="error">*</span></span>
             <span>
                 <input type="text" v-model="firstName" id="name" placeholder="Введите ваше имя" @focus="inputFocus[0] = true" @blur="inputFocus[0] = false">
             </span>
         </div>
         <div :class="inputFocus[1]===false ? 'input focus': 'input blur' ">
-            <span class="title">Фамилия</span>
+            <span class="title">Фамилия<span v-if="this.errorLastName" class="error">*</span></span>
             <span>
                 <input type="text" v-model="lastName" id="name" placeholder="Введите вашу фамилию" @focus="inputFocus[1] = true" @blur="inputFocus[1] = false">
             </span>
         </div>
-        <span>День рождения</span>
+        <span>День рождения<span v-if="this.errorDate" class="error">*</span></span>
         <div class="select">
             <select v-model="day" :class="inputFocus[2]===false ? 'select_focus': 'select_blur' " @click="inputFocus[2] = !inputFocus[2]" @blur="inputFocus[2] = false">
                 <option disabled value="">День</option>
@@ -62,31 +142,31 @@ export default{
                 <option v-for="element in arrYear" v-bind:value="element.value" :key="element">{{ element.title }}</option>
             </select>
         </div>
-        <span>Пол</span>
+        <span>Пол<span v-if="this.errorSex" class="error">*</span></span>
         <div class="radio">   
             <label for="one">
-                <input type="radio" id="one" value="Один" v-model="sex">
+                <input type="radio" id="one" value="1" v-model="sex">
                 <span>Мужской</span>
             </label>
             <label for="two">
-                <input type="radio" id="two" value="Два" v-model="sex">
+                <input type="radio" id="two" value="2" v-model="sex">
                 <span>Женский</span>
             </label>
         </div>
         <div :class="inputFocus[5]===false ? 'input emailBefore focus': 'input emailBefore blur' ">
-            <span class="title">Адрес эл. почты</span>
+            <span class="title">Адрес эл. почты<span v-if="this.errorEmail" class="error">*</span></span>
             <span>
                 <input type="email" v-model="email" id="name" placeholder="Введите адрес эл. почты" @focus="inputFocus[5] = true" @blur="inputFocus[5] = false">
             </span>
         </div>
         <div :class="inputFocus[6]===false ? 'input passwordBefore focus': 'input passwordBefore blur' ">
-            <span class="title">Пароль</span>
+            <span class="title">Пароль<span v-if="this.errorPassword" class="error">*</span></span>
             <span class="input_password">
                 <span :class="passwordClass" @click="switchPassword"></span>
                 <input :type="passwordType" v-model="password" id="name" placeholder="Введите пароль" @focus="inputFocus[6] = true" @blur="inputFocus[6] = false">
             </span>
         </div>
-        <button>Зарегистрироваться</button>
+        <button @click.stop.prevent="signUp">Зарегистрироваться</button>
         <div style="margin-bottom: 35px;">
             Уже есть на Relp? <router-link :to="{name:'SignIn'}">Авторизоваться</router-link>
         </div>
@@ -109,6 +189,9 @@ export default{
 .title{
     font-size: 17px;
     cursor: default;
+}
+.error{
+    color: red;
 }
 input{
     width: 340px;

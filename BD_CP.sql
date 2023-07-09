@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Время создания: Июл 07 2023 г., 23:37
+-- Время создания: Июл 10 2023 г., 00:46
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.2.34
 
@@ -172,16 +172,17 @@ CREATE TABLE `product` (
   `website` varchar(255) NOT NULL,
   `gpsx` double NOT NULL,
   `gpsy` double NOT NULL,
-  `logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+  `logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `status_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `product`
 --
 
-INSERT INTO `product` (`id`, `title`, `author_id`, `description`, `street`, `phone`, `website`, `gpsx`, `gpsy`, `logo`) VALUES
-(2, 'Много мяса', 1, 'Я увидел огромную толпу людей возле магазина и понял, что попробовать стоит. Оказалось, что бутерброд на завтрак был самым популярным блюдом, но я выбрал батон с фисташками Эрл Грей, так как я уже ел в тот день. Это было потрясающе. Я люблю Эрл Грей и фисташковый по отдельности, и никогда не пробовала их вместе. Я не знаю, почему другие пекарни еще не попробовали эту комбинацию. Буханка была не слишком сладкой, что делало ее хорошим угощением в полдень, но не слишком тяжелым. ', 'Грязнова, 36', '+7-912-318-69-63', 'https://newlms.magtu.ru/', 53.397227, 58.98416, '/src/assets/img/img1.jpg'),
-(3, 'Компания по выпечке', 2, 'Бутерброды на завтрак здесь такие вкусные! Вы должны получить специальный с беконом и авокадо, потому что он действительно добавляет сэндвичу сливочный, соленый и хрустящий вкус. Бутерброды довольно массивные, и моя любимая часть - печенье! Он маслянистый и слоеный и так хорошо сочетается с начинкой! Это простой бутерброд, который по-прежнему вкусен и попадает в точку!', 'Грязнова, 36', '+7-912-318-69-63', 'https://newlms.magtu.ru/', 53.397227, 58.98416, '/src/assets/img/img1.jpg');
+INSERT INTO `product` (`id`, `title`, `author_id`, `description`, `street`, `phone`, `website`, `gpsx`, `gpsy`, `logo`, `status_id`) VALUES
+(2, 'Много мяса', 1, 'Я увидел огромную толпу людей возле магазина и понял, что попробовать стоит. Оказалось, что бутерброд на завтрак был самым популярным блюдом, но я выбрал батон с фисташками Эрл Грей, так как я уже ел в тот день. Это было потрясающе. Я люблю Эрл Грей и фисташковый по отдельности, и никогда не пробовала их вместе. Я не знаю, почему другие пекарни еще не попробовали эту комбинацию. Буханка была не слишком сладкой, что делало ее хорошим угощением в полдень, но не слишком тяжелым. ', 'Грязнова, 36', '+7-912-318-69-63', 'https://newlms.magtu.ru/', 53.397227, 58.98416, '/src/assets/img/img1.jpg', 1),
+(3, 'Компания по выпечке', 2, 'Бутерброды на завтрак здесь такие вкусные! Вы должны получить специальный с беконом и авокадо, потому что он действительно добавляет сэндвичу сливочный, соленый и хрустящий вкус. Бутерброды довольно массивные, и моя любимая часть - печенье! Он маслянистый и слоеный и так хорошо сочетается с начинкой! Это простой бутерброд, который по-прежнему вкусен и попадает в точку!', 'Грязнова, 36', '+7-912-318-69-63', 'https://newlms.magtu.ru/', 53.397227, 58.98416, '/src/assets/img/img1.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -242,6 +243,7 @@ INSERT INTO `productmenu` (`id`, `name`, `price`, `product_id`) VALUES
 --
 
 CREATE TABLE `producttag` (
+  `id` int NOT NULL,
   `product_id` int NOT NULL,
   `tag_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -250,9 +252,10 @@ CREATE TABLE `producttag` (
 -- Дамп данных таблицы `producttag`
 --
 
-INSERT INTO `producttag` (`product_id`, `tag_id`) VALUES
-(2, 1),
-(3, 3);
+INSERT INTO `producttag` (`id`, `product_id`, `tag_id`) VALUES
+(1, 2, 1),
+(2, 3, 3),
+(3, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -274,7 +277,7 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`id`, `user_id`, `product_id`, `grade_id`, `text`, `date`) VALUES
-(1, 1, 2, 3, 'Было ок', '2023-07-06 10:06:05'),
+(1, 1, 2, 3, 'Было ок', '2023-07-06 10:06:00'),
 (2, 2, 3, 4, 'Было супер ок', '2023-07-06 10:06:05');
 
 -- --------------------------------------------------------
@@ -319,6 +322,27 @@ INSERT INTO `sex` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `status`
+--
+
+CREATE TABLE `status` (
+  `id` int NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `status`
+--
+
+INSERT INTO `status` (`id`, `name`, `description`) VALUES
+(1, 'approved', 'Продукт проверен редактором и одобрен для просмотра другими пользователями'),
+(2, 'unapproved', 'Продукт проверен редактором и не одобрен для просмотра другими пользователями'),
+(3, 'expects', 'Ожидает проверки редактора для получения одобрения просмотра другими пользователями');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `tag`
 --
 
@@ -343,6 +367,7 @@ INSERT INTO `tag` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `userrole` (
+  `id` int NOT NULL,
   `user_id` int NOT NULL,
   `role_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -351,10 +376,10 @@ CREATE TABLE `userrole` (
 -- Дамп данных таблицы `userrole`
 --
 
-INSERT INTO `userrole` (`user_id`, `role_id`) VALUES
-(1, 'Администратор'),
-(2, 'Пользователь'),
-(1, 'Редактор');
+INSERT INTO `userrole` (`id`, `user_id`, `role_id`) VALUES
+(1, 1, 'Администратор'),
+(2, 2, 'Пользователь'),
+(3, 1, 'Редактор');
 
 -- --------------------------------------------------------
 
@@ -378,8 +403,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name_first`, `name_last`, `password`, `sex`, `img`, `birthdate`, `email`) VALUES
-(1, 'Артём', 'Аверин', '123', 1, '/src/assets/img/img2.jpg', '2003-01-18', 'artem@mail.ru'),
-(2, 'Сергей', 'Пинпун', '123', 2, '/src/assets/img/img2.jpg', '2004-04-08', 'sergey@gmail.com');
+(1, 'Артём', 'Аверин', '202cb962ac59075b964b07152d234b70', 1, '/src/assets/img/img2.jpg', '2003-01-18', 'artem@mail.ru'),
+(2, 'Сергей', 'Пинпун', '202cb962ac59075b964b07152d234b70', 2, '/src/assets/img/img2.jpg', '2004-04-08', 'sergey@gmail.com');
 
 --
 -- Индексы сохранённых таблиц
@@ -426,7 +451,8 @@ ALTER TABLE `opentime`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `authorid` (`author_id`);
+  ADD KEY `authorid` (`author_id`),
+  ADD KEY `status_id` (`status_id`);
 
 --
 -- Индексы таблицы `productgrade`
@@ -447,6 +473,7 @@ ALTER TABLE `productmenu`
 -- Индексы таблицы `producttag`
 --
 ALTER TABLE `producttag`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `tagid` (`tag_id`),
   ADD KEY `productid` (`product_id`);
 
@@ -472,6 +499,12 @@ ALTER TABLE `sex`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `status`
+--
+ALTER TABLE `status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `tag`
 --
 ALTER TABLE `tag`
@@ -481,6 +514,7 @@ ALTER TABLE `tag`
 -- Индексы таблицы `userrole`
 --
 ALTER TABLE `userrole`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `roleid` (`role_id`),
   ADD KEY `userid` (`user_id`);
 
@@ -544,6 +578,12 @@ ALTER TABLE `productmenu`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT для таблицы `producttag`
+--
+ALTER TABLE `producttag`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT для таблицы `review`
 --
 ALTER TABLE `review`
@@ -556,9 +596,21 @@ ALTER TABLE `sex`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT для таблицы `status`
+--
+ALTER TABLE `status`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT для таблицы `tag`
 --
 ALTER TABLE `tag`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `userrole`
+--
+ALTER TABLE `userrole`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -591,7 +643,8 @@ ALTER TABLE `opentime`
 -- Ограничения внешнего ключа таблицы `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Ограничения внешнего ключа таблицы `productgrade`

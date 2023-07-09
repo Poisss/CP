@@ -7,6 +7,7 @@ import catalog from './components/catalog.vue'
 import product from './components/product.vue'
 import profile from './components/profile.vue'
 import profileView from './components/profileView.vue'
+import control from './components/control.vue'
 import info from './components/information.vue';
 
 export default createRouter({
@@ -55,6 +56,12 @@ export default createRouter({
             path:'/user_details',
             name:'profileView',
             component:profileView,
+            props: true
+        },
+        {
+            path:'/control',
+            name:'control',
+            component:control,
             props: true
         },
         {

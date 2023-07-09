@@ -1,5 +1,14 @@
 <script>
+import axios from 'axios';
+import router from '../router.js';
+import { useStore } from '../store/store';
 export default{
+    setup(){
+        const Store = useStore()
+        return{
+            Store
+        }
+    },
     data() {
         return {
             email:"",
@@ -7,13 +16,56 @@ export default{
             passwordType:"password",
             passwordClass:"input_password_span eye",
             inputFocus:[false,false],
-            rr: null
+            rr: null,
+            errorMessage:''
         }
     },
     mounted() {
         this.rr = this.$route.query.id
+        const Store = useStore();
+
+        if (Store.success) {
+        router.push({ name: 'home' });
+        }
     },
     methods:{
+        signIn() {
+            const userData = {
+                email: this.email,
+                password: this.password
+            };
+            axios.post('http://cp/site/project/php/authoriz.php', userData, {
+                timeout: 50000,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(response => {
+                console.log(response.data);
+                if(response.data.success){
+                    const Store = useStore()
+                    Store.setRole(response.data.role)
+                    Store.setName(response.data.name)
+                    Store.setSuccess(response.data.success)
+                    Store.setNamelast(response.data.name_last)
+                    Store.setId(response.data.id)
+                    Store.setImg(response.data.img)
+                    router.push({name: 'home'})
+                }else{
+                    this.errorMessage = response.data.message
+                }
+            })
+            .catch(error => {
+                if (error.response) {
+                    console.error('Ошибка ответа от сервера:', error.response.data);
+                } else if (error.request) {
+                    console.error('Ошибка запроса:', error.request);
+                } else {
+                    console.error('Ошибка настройки запроса:', error.message);
+                }
+            });
+        },
         switchPassword(){
             this.passwordType=this.passwordType==="password" ? "text" : "password"
             this.passwordClass=this.passwordType==="password" ? "input_password_span eye" : "input_password_span eye-slash"
@@ -25,8 +77,9 @@ export default{
 <template>
 
 <div class="field">
-    <h1>Вход</h1>
-    <form>
+    <h1>Авторизация</h1>
+    <div v-if="errorMessage" class="errorMessage">{{ errorMessage }}</div>
+    <form @click.prevent>
         <div :class="inputFocus[0]===false ? 'input emailBefore focus': 'input emailBefore blur' ">
             <span class="title">Адрес эл. почты</span>
             <span>
@@ -40,7 +93,7 @@ export default{
                 <input :type="passwordType" v-model="password" id="name" placeholder="Введите пароль" @focus="inputFocus[1] = true" @blur="inputFocus[1] = false">
             </span>
         </div>
-        <button>Войти</button>
+        <button @click.stop.prevent="signIn">Войти</button>
         <div style="margin-bottom: 35px;">
             Новичок в Relp? <router-link :to="{name:'SignUp'}">Зарегистрироваться</router-link>
         </div>
@@ -59,6 +112,9 @@ export default{
     border: 1px solid gray;
     border-radius: 20px;
     box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+}
+.errorMessage{
+    color: red;
 }
 .title{
     font-size: 17px;
