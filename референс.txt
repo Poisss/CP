@@ -1,8 +1,6 @@
 1.https://www.yelp.com/biz/chu-on-this-las-vegas
 2.https://www.yelp.com/biz/sushi-time-las-vegas
 
-loding
-https://ru.vuejs.org/v2/cookbook/using-axios-to-consume-apis.html
 
 сделать поля с номером телефона и офицальной веб страницки или сетей
 
