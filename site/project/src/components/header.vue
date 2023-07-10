@@ -1,5 +1,6 @@
 <script>
 import { useStore } from '../store/store';
+import router from '../router.js';
 export default{
     setup(){
         const Store = useStore()
@@ -201,11 +202,11 @@ export default{
                     <img :src="Store.img" alt="">
                 </div>
                 <div v-if="menu_focus" class="activity-block-header-img-block">
-                    <router-link :to="{name:'profile'}" @click="menu_click" class="activity-block-header-img-block-li">
+                    <router-link :to="{name:'profileView',query:{userid:Store.id}}" @click="menu_click" class="activity-block-header-img-block-li">
                         Личные кабинет
                     </router-link>
                     <router-link :to="{name:'control'}" @click="menu_click" class="activity-block-header-img-block-li">
-                        Управление
+                        Мои продукты
                     </router-link>
                     <div @click="logout" class="activity-block-header-img-block-li">
                         Выход

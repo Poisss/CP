@@ -5,7 +5,7 @@ import SignU from './components/SignUp.vue'
 import MainM from './components/Main.vue'
 import catalog from './components/catalog.vue'
 import product from './components/product.vue'
-import profile from './components/profile.vue'
+import profileUp from './components/profileUp.vue'
 import profileView from './components/profileView.vue'
 import control from './components/control.vue'
 import info from './components/information.vue';
@@ -47,9 +47,9 @@ export default createRouter({
             props: true
         },
         {
-            path:'/user',
-            name:'profile',
-            component:profile,
+            path:'/user_etit',
+            name:'profileUp',
+            component:profileUp,
             props: true
         },
         {

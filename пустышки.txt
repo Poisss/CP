@@ -47,3 +47,5 @@ activity_card:[{user_id:'ccd1',user_name:'Артём',user_name_last:'Авери
                             {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'5',product_id:'c01',product_title:'Киевси',product_img:'/src/assets/img/img1.jpg'},
                             {user_id:'ccd1',user_name:'Артём',user_name_last:'Аверин',user_img:'/src/assets/img/img2.jpg',user_comment_text:'привет мир привет мир привет мир привет мир привет мир',user_grade:'3',product_id:'c00',product_title:'Мак',product_img:'/src/assets/img/img1.jpg'},
 			]
+user:[{img:'/src/assets/img/img2.jpg',name:'Артем',name_last:'Hверин',
+            sex:'Мужской',birthdate:'2003-01-18'}]
