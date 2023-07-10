@@ -1,5 +1,8 @@
 <?php
     include './connect.php';
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: POST, GET, OPTIONS"); 
+        header("Access-Control-Allow-Headers: Content-Type");
     try {
         $sql = "SELECT p.id AS product_id, p.title AS product_title,
         p.description AS product_description,
@@ -13,15 +16,9 @@
         WHERE s.name='approved'
         GROUP BY p.id";
         $result = mysqli_query($conn, $sql);
-        // if (!$result) {
-        //     throw new Exception(mysqli_error($conn));
-        // }
-        // (SELECT t.name from producttag as pt JOIN tag as t ON t.id=pt.tag_id where pt.product_id=p.id) as tag
         $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
+        $grade=0;
         foreach ($data as &$item) {
-            // $grade = $item['product_grade_id'] * $item['product_grade_count'] / $item['product_count'];
-            // $item['product_grade'] = $grade;
             $gradeid= explode('|', $item['product_grade_id']);
             $item['product_grade_id'] = $gradeid;
             foreach($item['product_grade_id'] as $num){
@@ -47,9 +44,7 @@
             $item['openingTimes'] = $openingTimes;
             unset($item['product_grade_id']);
         }
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Methods: POST, GET, OPTIONS"); 
-        header("Access-Control-Allow-Headers: Content-Type");
+        
         echo json_encode($data, JSON_NUMERIC_CHECK);
     } catch(Exception $e) {
         echo "Ошибка при выполнении запроса: " . $e->getMessage();

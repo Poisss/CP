@@ -10,7 +10,8 @@ export default{
             Store.name_last = '';
             Store.img='';
             Store.id = '';
-            router.push({ name: 'home' })
+            router.push({ name: 'home' });
+            this.menu_focus=false;
         }
 
         return{
@@ -201,7 +202,7 @@ export default{
                 </div>
                 <div v-if="menu_focus" class="activity-block-header-img-block">
                     <router-link :to="{name:'profile'}" @click="menu_click" class="activity-block-header-img-block-li">
-                        Личные данные
+                        Личные кабинет
                     </router-link>
                     <router-link :to="{name:'control'}" @click="menu_click" class="activity-block-header-img-block-li">
                         Управление
