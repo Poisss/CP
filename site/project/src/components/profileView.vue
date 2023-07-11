@@ -168,7 +168,7 @@ export default{
                     <p>Отзывов: {{ review.length }}</p>
                 </div>
                 <div v-if="this.$route.query.userid==Store.id">
-                    <router-link :to="{name:'profileUp',query:{product_id:Store.id}}" class="main-review-header-title">
+                    <router-link :to="{name:'profileUp',query:{userid:Store.id}}" class="main-review-header-title">
                         Редактировать
                     </router-link>
                     
